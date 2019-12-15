@@ -1,44 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import connect from '@vkontakte/vk-connect';
-import View from '@vkontakte/vkui/dist/components/View/View';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
+import { View, Spinner, Footer } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import { connect } from 'react-redux';
+import { getValidationQuery } from './store/actions/validationActions';
+import { getCurrentUser } from './store/actions/userActions';
 
-const App = () => {
+const mapStateToProps = (state) => {
+    return {
+		activePanel: state.panel.activePanel,
+		vkquery: state.validation.vkquery,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+		getValidationQuery: () => dispatch(getValidationQuery()),
+		getCurrentUser: () => dispatch(getCurrentUser()),
+    }
+}
+
+const App = props => {
+	const { getValidationQuery, vkquery, getCurrentUser } = props;
 	const [activePanel, setActivePanel] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [popout, setPopout] = useState(null);
+
+	const openPopout = (popout) => {
+		setPopout(popout);
+	}
+	
+	const closePopout = () => {
+		setPopout(null);
+	}
 
 	useEffect(() => {
-		connect.subscribe(({ detail: { type, data }}) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
-			}
-		});
-		async function fetchData() {
-			const user = await connect.sendPromise('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
+		getValidationQuery();
+		getCurrentUser();
+	}, [])
 
-	const go = e => {
+	const go = (e) => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 
-	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
-		</View>
-	);
+	if (vkquery) {
+		return (
+			<View popout={popout} activePanel={activePanel}>
+				<Home 
+					id="home" 
+					go={go} 
+					openPopout={openPopout} 
+					closePopout={closePopout} 
+				/>
+				{/* <InventoryDetails id="testdetails" go={go} />
+				<InventoryPlayer id="testplayer" go={go} />
+				<InventoryResult id="resultprofile" go={go} /> */}
+			</View>
+		)
+	} else {
+		return (
+			<div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+				<Spinner size="large" style={{ marginTop: 20 }} />
+				<Footer>Loading... If this doesn't go away you may be using the app outside of VK</Footer>
+			</div>
+		)
+	}
 }
-
-export default App;
-
+export default connect(mapStateToProps, mapDispatchToProps) (App);

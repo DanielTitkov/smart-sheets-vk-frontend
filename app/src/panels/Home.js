@@ -1,35 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import { Panel, Group, PanelHeader, Tabs, TabsItem } from '@vkontakte/vkui';
+import { setActivePanel } from '../store/actions/panelActions';
+import { connect } from 'react-redux';
+import ErrorSnackbar from '../components/interface/ErrorSnackbar';
+import UserSnippet from '../components/user/UserSnippet';
 
-const Home = ({ id, go, fetchedUser }) => (
-	<Panel id={id}>
-		<PanelHeader>Example</PanelHeader>
-		{fetchedUser &&
-		<Group title="User Data Fetched with VK Connect">
-			<Cell
-				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
-			>
-				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-			</Cell>
-		</Group>}
+const mapStateToProps = (state) => {
+	return {
+		currentUser: state.user.currentUser,
+		userError: state.user.error,
+	}
+}
 
-		<Group title="Navigation Example">
-			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Show me the Persik, please
-				</Button>
-			</Div>
-		</Group>
-	</Panel>
-);
+const mapDispatchToProps = (dispatch) => {
+    return {
+		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+    }
+}
+
+const Home = (props) => {
+	const { 
+		id, go, 
+		currentUser, userError,
+		openPopout, closePopout,
+	} = props;
+
+	const [activeTab, setActiveTab] = useState("new");
+	const [snackbar, setSnackbar] = useState(null);
+
+	return (
+		<Panel id={id}>
+			<PanelHeader>Умные Листочки</PanelHeader>
+			<UserSnippet currentUser={ currentUser } />
+            <Group>
+            </Group>	
+			{ snackbar }
+		</Panel>
+	)
+};
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
@@ -44,4 +53,4 @@ Home.propTypes = {
 	}),
 };
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps) (Home);
