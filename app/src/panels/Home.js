@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Group, PanelHeader, Tabs, TabsItem } from '@vkontakte/vkui';
+import { Panel, Group, PanelHeader, Tabs, TabsItem, Div, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../store/actions/panelActions';
 import { connect } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
@@ -34,6 +34,26 @@ const Home = (props) => {
 			<PanelHeader>Умные Листочки</PanelHeader>
 			<UserSnippet currentUser={ currentUser } />
             <Group>
+				<Div>
+					<Button 
+						size="xl" 
+						level="2" 
+						onClick={go} 
+						data-to={"catalog"} 
+					>
+						{ "Add new Smart Sheet" } 
+					</Button>
+				</Div>
+				<Div>
+					<Button 
+						size="xl" 
+						level="2" 
+						onClick={go} 
+						data-to={"profilesettings"} 
+					>
+						{ "Edit profile" } 
+					</Button>
+				</Div>
             </Group>	
 			{ snackbar }
 		</Panel>

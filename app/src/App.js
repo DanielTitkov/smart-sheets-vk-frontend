@@ -6,6 +6,8 @@ import Home from './panels/Home';
 import { connect } from 'react-redux';
 import { getValidationQuery } from './store/actions/validationActions';
 import { getCurrentUser } from './store/actions/userActions';
+import Catalog from './panels/sheets/Catalog';
+import ProfileSettings from './panels/profile/Settings';
 
 const mapStateToProps = (state) => {
     return {
@@ -46,12 +48,14 @@ const App = props => {
 	if (vkquery) {
 		return (
 			<View popout={popout} activePanel={activePanel}>
+				<ProfileSettings id="profilesettings" go={go}  />
 				<Home 
 					id="home" 
 					go={go} 
 					openPopout={openPopout} 
 					closePopout={closePopout} 
 				/>
+				<Catalog id="catalog" go={go} />
 				{/* <InventoryDetails id="testdetails" go={go} />
 				<InventoryPlayer id="testplayer" go={go} />
 				<InventoryResult id="resultprofile" go={go} /> */}
