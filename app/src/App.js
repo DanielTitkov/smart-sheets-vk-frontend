@@ -8,6 +8,7 @@ import { getValidationQuery } from './store/actions/validationActions';
 import { getCurrentUser } from './store/actions/userActions';
 import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
+import Editor from './panels/sheets/Editor';
 
 const mapStateToProps = (state) => {
     return {
@@ -56,6 +57,7 @@ const App = props => {
 					closePopout={closePopout} 
 				/>
 				<Catalog id="catalog" go={go} />
+				<Editor id="editor" go={go} />
 				{/* <InventoryDetails id="testdetails" go={go} />
 				<InventoryPlayer id="testplayer" go={go} />
 				<InventoryResult id="resultprofile" go={go} /> */}

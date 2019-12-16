@@ -54,6 +54,16 @@ const Home = (props) => {
 						{ "Edit profile" } 
 					</Button>
 				</Div>
+				<Div>
+					<Button 
+						size="xl" 
+						level="2" 
+						onClick={go} 
+						data-to={"editor"} 
+					>
+						{ "Pagie Editor" } 
+					</Button>
+				</Div>
             </Group>	
 			{ snackbar }
 		</Panel>
