@@ -4,6 +4,7 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import TextFrame from '../../components/sheets/TextFrame';
 
 const osname = platform();
 const mapStateToProps = (state) => {
@@ -21,6 +22,9 @@ const mapStateToProps = (state) => {
             >
                 Sheets Editor
             </PanelHeader>
+            <Div>
+                <TextFrame />
+            </Div>
         </Panel>
     )
 }
