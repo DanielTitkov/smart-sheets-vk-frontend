@@ -5,6 +5,7 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFrame from '../../components/sheets/TextFrame';
+import SheetTitle from '../../components/sheets/SheetTitle';
 
 const osname = platform();
 const mapStateToProps = (state) => {
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => {
                 Sheets Editor
             </PanelHeader>
             <Div>
+                <SheetTitle />
                 <TextFrame />
             </Div>
         </Panel>
