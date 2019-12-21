@@ -1,7 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import TextFrame from '../src/components/sheets/TextFrame';
-import { View, Panel } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 export default {
@@ -9,5 +8,16 @@ export default {
   };
 
 export const basic = () => (
-    <TextFrame />
+    <TextFrame
+        title="Красная шляпа"
+        desc="Напишите о своих чувствах, связанных с темой обсуждения. Любые чувства. Хоть хорошие, хоть плохие. Хоть эмоции, хоть предчувствия."
+    />
+);
+
+export const withImage = () => (
+    <TextFrame
+        title="Красная шляпа"
+        desc="Напишите о своих чувствах, связанных с темой обсуждения. Любые чувства. Хоть хорошие, хоть плохие. Хоть эмоции, хоть предчувствия."
+        imageURL="http://personage.kz/images/detailed/9/shlyapa-krasnaya-vzroslaya-19748.jpg" 
+    />
 );

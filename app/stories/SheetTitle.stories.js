@@ -8,5 +8,7 @@ export default {
   };
 
 export const basic = () => (
-    <SheetTitle />
+    <SheetTitle 
+        text="Кто сильнее - акула или медведь?"
+    />
 );

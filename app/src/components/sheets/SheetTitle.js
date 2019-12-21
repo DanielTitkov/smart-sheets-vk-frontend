@@ -1,8 +1,9 @@
 import React from 'react';
 
 const SheetTitle = props => {
+    const { text } = props;
     return (
-        <h1>Sheet Title</h1>
+        <h1>{ text }</h1>
     )
 }
 
