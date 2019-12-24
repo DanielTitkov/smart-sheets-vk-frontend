@@ -5,6 +5,7 @@ import { setActivePanel } from '../store/actions/panelActions';
 import { connect } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
 import UserSnippet from '../components/user/UserSnippet';
+import SheetSnippetList from '../components/sheets/SheetShippetList';
 
 const mapStateToProps = (state) => {
 	return {
@@ -34,6 +35,7 @@ const Home = (props) => {
 			<PanelHeader>Умные Листочки</PanelHeader>
 			<UserSnippet currentUser={ currentUser } />
             <Group>
+				<SheetSnippetList />
 				<Div>
 					<Button 
 						size="xl" 

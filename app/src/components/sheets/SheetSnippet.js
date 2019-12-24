@@ -3,7 +3,7 @@ import { Cell, Avatar, Icon24MoreHorizontal, Group } from '@vkontakte/vkui';
 import SheetSnippetControls from './SheetSnippetControls';
 
 const SheetSnippet = props => {
-    const { title, updateTime, imageURL } = props;
+    const { type, title, updateTime, imageURL } = props;
     return (
         <div className="SheetSnippet">
             <Cell
@@ -13,7 +13,7 @@ const SheetSnippet = props => {
                         src={ imageURL } 
                     />
                 }
-                description={ "Updated at " + updateTime }
+                description={ type + " | " + updateTime }
                 asideContent={
                     <SheetSnippetControls />
                 }
