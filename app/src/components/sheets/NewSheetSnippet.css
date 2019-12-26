@@ -1,17 +1,19 @@
 .NewSheetSnippet {
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     margin: 10px;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
-    /* max-height: 200px; */
     max-width: 50%;
     overflow: hidden;
+    transition: 0.3s;
+}
+
+.NewSheetSnippet:hover {
+    border: 1px solid #bbb;
 }
 
 .NewSheetSnippet-image {
-    min-height: 40%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,13 +21,14 @@
     border-top-right-radius: 0.5rem;
     overflow: hidden;
     position: relative;
-    /* &::before {
-        content: "";
-          display: block;
-        padding-top: 56.25%;
-      } */
     background-color: blueviolet;
 }
+
+.NewSheetSnippet-image::before {
+    content: "";
+    display: block;
+    padding-top: 25%;
+} 
 
 .NewSheetSnippet-content {
     display: flex;
@@ -34,6 +37,15 @@
     padding: 1rem;
 }
 
+.NewSheetSnippet-title {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 .NewSheetSnippet-desc {
     flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
 }
+

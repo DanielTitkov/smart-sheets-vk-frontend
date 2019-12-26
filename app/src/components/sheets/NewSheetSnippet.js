@@ -11,9 +11,6 @@ const NewSheetSnippet = props => {
             <div className="NewSheetSnippet-content">
                 <h4 className="NewSheetSnippet-title">{ title }</h4>
                 <p className="NewSheetSnippet-desc">{ desc }</p>
-                <Div>
-                    <Button before={<Icon24Add/>}>Add item</Button>
-                </Div>
             </div>
         </div>
     )
