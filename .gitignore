@@ -12,7 +12,7 @@ node_modules
 .npm
 
 # Prod Bundle
-/build
+/app/build
 
 .vscode
 .idea
