@@ -5,19 +5,25 @@ import NewSheetSnippet from '../src/components/sheets/NewSheetSnippet';
 
 export default {
     title: 'NewSheetSnippet',
-  };
+};
+
+const sheet = {
+    id: 5,
+    title: "Шесть шляп мышления",
+    desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы", 
+}
 
 export const basic = () => (
     <NewSheetSnippet 
-        title="Шесть шляп мышления"
-        desc="Техника, которая помогает раскласть всякое по полочками и смешные шляпы"
+        sheet={sheet}
     />
 );
 
 export const withImage = () => (
     <NewSheetSnippet 
-        title="Шесть шляп мышления"
-        desc="Техника, которая помогает раскласть всякое по полочками и смешные шляпы"
-        imageURL="https://unsplash.it/800/600?image=59"
+        sheet={ {
+            ...sheet, 
+            imageURL: "https://unsplash.it/800/600?image=59",
+        } }
     />
 );

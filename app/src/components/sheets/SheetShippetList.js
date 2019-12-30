@@ -35,10 +35,7 @@ const SheetSnippetList = props => {
                 return (
                     <SheetSnippet
                         key={ sheet.id }
-                        type={ sheet.type }
-                        title={ sheet.title }
-                        imageURL={ sheet.imageURL }
-                        updateTime={ sheet.updateTime }
+                        sheet={ sheet }
                     />
                 )
             })

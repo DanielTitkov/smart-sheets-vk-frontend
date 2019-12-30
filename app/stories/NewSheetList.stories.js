@@ -3,6 +3,8 @@ import { action } from '@storybook/addon-actions';
 import '@vkontakte/vkui/dist/vkui.css';
 import NewSheetList from '../src/components/sheets/NewSheetList';
 
+// TODO https://alligator.io/react/storybook-with-redux/
+
 const data = [
     {
         id: 1,

@@ -4,7 +4,7 @@ import NewSheetSnippet from './NewSheetSnippet';
 import "./NewSheetList.css";
 
 const NewSheetList = props => {
-    // const { sheets } = props;
+    // const { sheet } = props;
     const sheets = [
         {
             id: 1,
@@ -57,9 +57,7 @@ const NewSheetList = props => {
                         return (
                             <NewSheetSnippet 
                                 key={ sheet.id }
-                                title={ sheet.title }
-                                desc={ sheet.desc }
-                                imageURL={ sheet.imageURL }
+                                sheet={ sheet }
                             />
                         )
                     })

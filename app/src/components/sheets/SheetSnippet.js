@@ -3,22 +3,22 @@ import { Cell, Avatar, Icon24MoreHorizontal, Group } from '@vkontakte/vkui';
 import SheetSnippetControls from './SheetSnippetControls';
 
 const SheetSnippet = props => {
-    const { type, title, updateTime, imageURL } = props;
+    const { sheet } = props;
     return (
         <div className="SheetSnippet">
             <Cell
                 before={
-                    imageURL && <Avatar 
+                    sheet.imageURL && <Avatar 
                         type="image"
-                        src={ imageURL } 
+                        src={ sheet.imageURL } 
                     />
                 }
-                description={ type + " | " + updateTime }
+                description={ sheet.type + " | " + sheet.updateTime }
                 asideContent={
                     <SheetSnippetControls />
                 }
             >
-                { title }
+                { sheet.title }
             </Cell>
         </div>
     )

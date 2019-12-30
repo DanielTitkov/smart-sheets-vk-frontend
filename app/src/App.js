@@ -13,6 +13,7 @@ import Editor from './panels/sheets/Editor';
 const mapStateToProps = (state) => {
     return {
 		activePanel: state.panel.activePanel,
+		modal: state.modal.modal,
 		vkquery: state.validation.vkquery,
     }
 }
@@ -25,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const App = props => {
-	const { getValidationQuery, vkquery, getCurrentUser } = props;
+	const { getValidationQuery, vkquery, getCurrentUser, modal } = props;
 	const [activePanel, setActivePanel] = useState('home');
 	const [popout, setPopout] = useState(null);
 
@@ -48,19 +49,17 @@ const App = props => {
 
 	if (vkquery) {
 		return (
-			<View popout={popout} activePanel={activePanel}>
+			<View popout={popout} modal={modal} activePanel={activePanel}>
 				<ProfileSettings id="profilesettings" go={go}  />
 				<Home 
 					id="home" 
 					go={go} 
-					openPopout={openPopout} 
-					closePopout={closePopout} 
 				/>
-				<Catalog id="catalog" go={go} />
+				<Catalog 
+					id="catalog"
+					go={go}
+				/>
 				<Editor id="editor" go={go} />
-				{/* <InventoryDetails id="testdetails" go={go} />
-				<InventoryPlayer id="testplayer" go={go} />
-				<InventoryResult id="resultprofile" go={go} /> */}
 			</View>
 		)
 	} else {
