@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = (props) => {
 	const { 
-		id, go, 
-		currentUser, userError,
+		id, currentUser, userError,
 		openPopout, closePopout,
+		setActivePanel,
 	} = props;
 
 	const [activeTab, setActiveTab] = useState("new");
@@ -40,8 +40,7 @@ const Home = (props) => {
 					<Button 
 						size="xl" 
 						level="2" 
-						onClick={go} 
-						data-to={"catalog"} 
+						onClick={ () => setActivePanel("catalog") } 
 					>
 						{ "Add new Smart Sheet" } 
 					</Button>
@@ -50,8 +49,7 @@ const Home = (props) => {
 					<Button 
 						size="xl" 
 						level="2" 
-						onClick={go} 
-						data-to={"profilesettings"} 
+						onClick={ () => setActivePanel("profilesettings") } 
 					>
 						{ "Edit profile" } 
 					</Button>
@@ -60,8 +58,7 @@ const Home = (props) => {
 					<Button 
 						size="xl" 
 						level="2" 
-						onClick={go} 
-						data-to={"editor"} 
+						onClick={ () => setActivePanel("editor") } 
 					>
 						{ "Pagie Editor" } 
 					</Button>
@@ -74,7 +71,6 @@ const Home = (props) => {
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
 	fetchedUser: PropTypes.shape({
 		photo_200: PropTypes.string,
 		first_name: PropTypes.string,

@@ -5,18 +5,26 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewSheetList from '../../components/sheets/NewSheetList';
+import { setActivePanel } from '../../store/actions/panelActions';
 
 const osname = platform();
+
 const mapStateToProps = (state) => {
 	return {}
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+    }
+}
+
 const Catalog = props => {
-    const { go } = props;
+    const { setActivePanel } = props;
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={go} data-to="home">
+                left={<HeaderButton onClick={ () => setActivePanel("home") } data-to="home">
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </HeaderButton>}
             >
@@ -29,7 +37,6 @@ const Catalog = props => {
 
 Catalog.propTypes = {
 	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps) (Catalog);
+export default connect(mapStateToProps, mapDispatchToProps) (Catalog);

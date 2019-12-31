@@ -6,18 +6,26 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFrame from '../../components/sheets/TextFrame';
 import SheetTitle from '../../components/sheets/SheetTitle';
+import { setActivePanel } from '../../store/actions/panelActions';
 
 const osname = platform();
+
 const mapStateToProps = (state) => {
 	return {}
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+    }
+}
+
  const Editor = props => {
-    const { go } = props;
+    const { setActivePanel } = props;
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={go} data-to="home">
+                left={<HeaderButton onClick={ () => setActivePanel("home") } data-to="home">
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </HeaderButton>}
             >
@@ -36,4 +44,4 @@ Editor.propTypes = {
 	go: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps) (Editor);
+export default connect(mapStateToProps, mapDispatchToProps) (Editor);

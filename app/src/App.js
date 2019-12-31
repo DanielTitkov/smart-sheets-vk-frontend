@@ -26,8 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const App = props => {
-	const { getValidationQuery, vkquery, getCurrentUser, modal } = props;
-	const [activePanel, setActivePanel] = useState('home');
+	const { getValidationQuery, vkquery, getCurrentUser, modal, activePanel } = props;
 	const [popout, setPopout] = useState(null);
 
 	const openPopout = (popout) => {
@@ -43,23 +42,13 @@ const App = props => {
 		getCurrentUser();
 	}, [])
 
-	const go = (e) => {
-		setActivePanel(e.currentTarget.dataset.to);
-	};
-
 	if (vkquery) {
 		return (
 			<View popout={popout} modal={modal} activePanel={activePanel}>
-				<ProfileSettings id="profilesettings" go={go}  />
-				<Home 
-					id="home" 
-					go={go} 
-				/>
-				<Catalog 
-					id="catalog"
-					go={go}
-				/>
-				<Editor id="editor" go={go} />
+				<ProfileSettings id="profilesettings" />
+				<Home id="home" />
+				<Catalog id="catalog" />
+				<Editor id="editor" />
 			</View>
 		)
 	} else {
