@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 import vkconnect from '@vkontakte/vk-connect';
 import App from './App';
 // import registerServiceWorker from './sw';
-import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 import thunk from 'redux-thunk';
+import ProviderWrapper from './Provider';
 
 // Init VK  Mini App
 vkconnect.send('VKWebAppInit', {});
@@ -19,9 +19,9 @@ const store = createStore(
 );
 
 const SmartSheetsApp = () => (
-    <Provider store={ store }>
+    <ProviderWrapper store={ store }>
         <App />
-    </Provider>
+    </ProviderWrapper>
 );
 
 ReactDOM.render(
