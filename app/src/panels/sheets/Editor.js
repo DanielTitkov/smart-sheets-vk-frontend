@@ -11,7 +11,9 @@ import { setActivePanel } from '../../store/actions/panelActions';
 const osname = platform();
 
 const mapStateToProps = (state) => {
-	return {}
+	return {
+        activeSheet: state.sheets.activeSheet,
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -20,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
- const Editor = props => {
+const Editor = props => {
     const { setActivePanel } = props;
     return (
         <Panel id={props.id}>

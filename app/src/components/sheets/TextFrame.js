@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormLayout, Textarea } from '@vkontakte/vkui';
 import './TextFrame.css';
 
 const TextFrame = props => {
-    const { title, desc, imageURL } = props
+    const { title, desc, imageURL, updateFunction } = props
     return (
         <div className="TextFrame">
             <FormLayout>
@@ -12,7 +12,7 @@ const TextFrame = props => {
                         <div className="TextFrame-header-image">
                             <img src={ imageURL } />
                         </div>
-                    )}
+                    ) }
                     <div className="TextFrame-header-text">
                         <h2>{ title }</h2>
                         <h3>{ desc }</h3>

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./SheetTitle.css"
 
 const SheetTitle = props => {
+    const { updateFunction } = props;
     const inputRef = useRef(null);
     const [inputVisible, setInputVisible] = useState(false);
     const [text, setText] = useState(props.text);
@@ -14,18 +15,16 @@ const SheetTitle = props => {
     }
 
     useEffect(() => {
-        // Handle outside clicks on mounted state
         if (inputVisible) {
             document.addEventListener("mousedown", onClickOutSide);
+        } else {
+            updateFunction(text); // this happens on closing of the input
         }
     
-        // This is a necessary step to "dismount" unnecessary events when we destroy the component
         return () => {
             document.removeEventListener("mousedown", onClickOutSide);
         };
     });
-
-
 
     return (
         <div className="SheetTitle">
@@ -33,7 +32,7 @@ const SheetTitle = props => {
                 <input
                     ref={inputRef} // Set the Ref
                     value={text} // Now input value uses local state
-                    onChange={e => {setText(e.target.value);}}
+                    onChange={ e => setText(e.target.value) }
                 />
             ) : (
                 <h1 onClick={() => setInputVisible(true)}>{text}</h1>
