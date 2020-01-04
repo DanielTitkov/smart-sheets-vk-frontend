@@ -6,8 +6,8 @@ import vkconnect from '@vkontakte/vk-connect';
 import App from './App';
 // import registerServiceWorker from './sw';
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './store/reducers/rootReducer';
 import thunk from 'redux-thunk';
+import rootReducer from './store/reducers/rootReducer';
 import ProviderWrapper from './Provider';
 
 // Init VK  Mini App

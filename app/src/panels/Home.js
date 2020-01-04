@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
 import UserSnippet from '../components/user/UserSnippet';
 import SheetSnippetList from '../components/sheets/SheetShippetList';
+import ActiveSheetSnippet from '../components/sheets/ActiveSheetSnippet';
 
 const mapStateToProps = (state) => {
 	return {
@@ -34,6 +35,7 @@ const Home = (props) => {
 		<Panel id={id}>
 			<PanelHeader>Умные Листочки</PanelHeader>
 			<UserSnippet currentUser={ currentUser } />
+			<ActiveSheetSnippet />
             <Group>
 				<SheetSnippetList />
 				<Div>

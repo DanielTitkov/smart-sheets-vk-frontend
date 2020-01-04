@@ -8,6 +8,8 @@ import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss';
 import { openModal, closeModal } from '../../../store/actions/modalActions';
 import { connect } from 'react-redux';
 import "./SheetDescModal.css";
+import { setActiveSheet } from '../../../store/actions/sheetsActions';
+import { setActivePanel } from '../../../store/actions/panelActions';
 
 const MODAL_PAGE_SHEET_DESC = "modal_page_sheet_desc";
 const MODALS_ORDER = [
@@ -17,12 +19,14 @@ const MODALS_ORDER = [
 const mapDispatchToProps = (dispatch) => {
     return {
 		openModal: (modal) => dispatch(openModal(modal)),
-		closeModal: () => dispatch(closeModal()),
+        closeModal: () => dispatch(closeModal()),
+        setActiveSheet: (sheet) => dispatch(setActiveSheet(sheet)),
+        setActivePanel: (panel) => dispatch(setActivePanel(panel)),
     }
 }
 
 const SheetDescModal = props => {
-    const { sheet, closeModal } = props;
+    const { sheet, closeModal, setActiveSheet, setActivePanel } = props;
     return (
         <ModalRoot activeModal={ MODALS_ORDER[0] }>
             <ModalPage
@@ -66,7 +70,11 @@ const SheetDescModal = props => {
                     <Button 
                         stretched 
                         size="xl"
-                        onClick={closeModal}
+                        onClick={ () => {
+                            setActiveSheet(sheet);
+                            closeModal();
+                            setActivePanel("editor");
+                        } }
                     >
                         Выбрать!
                     </Button>
