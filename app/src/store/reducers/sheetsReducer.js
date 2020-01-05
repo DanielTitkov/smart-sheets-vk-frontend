@@ -9,6 +9,17 @@ const sheetsReducer = (state=initState, action) => {
                 ...state,
                 activeSheet: action.sheet
             };
+        case "UPDATE_ACTIVE_SHEET_DATA":
+            return {
+                ...state,
+                activeSheet: {
+                    ...state.activeSheet,
+                    data: {
+                        ...state.activeSheet.data,
+                        [action.id] : action.data,
+                    }
+                }
+            }
         default:
             return state;
     }

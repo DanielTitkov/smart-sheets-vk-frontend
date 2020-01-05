@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import TextFrame from '../../components/sheets/TextFrame';
 import SheetTitle from '../../components/sheets/SheetTitle';
 import { setActivePanel } from '../../store/actions/panelActions';
+import { updateActiveSheetData } from '../../store/actions/sheetsActions';
 
 const osname = platform();
 
@@ -18,24 +19,25 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+        setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+        updateActiveSheetData: (id, data) => dispatch(updateActiveSheetData(id, data)),
     }
 }
 
 const Editor = props => {
-    const { setActivePanel } = props;
+    const { setActivePanel, updateActiveSheetData } = props;
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={ () => setActivePanel("home") } data-to="home">
+                left={<HeaderButton onClick={ () => setActivePanel("home") } >
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </HeaderButton>}
             >
                 Sheets Editor
             </PanelHeader>
             <Div>
-                <SheetTitle />
-                <TextFrame />
+                <SheetTitle text="foo" updateFunction={(data) => updateActiveSheetData(1, data)} /> 
+                <TextFrame updateFunction={(data) => updateActiveSheetData(2, data)} />
             </Div>
         </Panel>
     )
@@ -43,7 +45,6 @@ const Editor = props => {
 
 Editor.propTypes = {
 	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps) (Editor);

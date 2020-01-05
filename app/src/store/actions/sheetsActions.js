@@ -14,3 +14,9 @@ export const setActiveSheet = (sheet) => {
         })
     }
 };
+
+export const updateActiveSheetData = (id, data) => {
+    return (dispatch, getState) => {
+        dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: data });
+    }
+};

@@ -8,17 +8,15 @@ const SheetTitle = props => {
     const [text, setText] = useState(props.text);
 
     function onClickOutSide(e) {
-        // Check if user is clicking outside of <input>
         if (inputRef.current && !inputRef.current.contains(e.target)) {
             setInputVisible(false); // Disable text input
+            updateFunction(text); // save data
         }
     }
 
     useEffect(() => {
         if (inputVisible) {
             document.addEventListener("mousedown", onClickOutSide);
-        } else {
-            updateFunction(text); // this happens on closing of the input
         }
     
         return () => {
