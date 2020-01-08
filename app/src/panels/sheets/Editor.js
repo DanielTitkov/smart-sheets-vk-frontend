@@ -4,10 +4,9 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import TextFrame from '../../components/sheets/TextFrame';
-import SheetTitle from '../../components/sheets/SheetTitle';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { updateActiveSheetData } from '../../store/actions/sheetsActions';
+import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
 
 const osname = platform();
 
@@ -25,7 +24,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Editor = props => {
-    const { setActivePanel, updateActiveSheetData } = props;
+    const { activeSheet, setActivePanel, updateActiveSheetData } = props;
+    const sheetBody = buildSheetStructure(
+        activeSheet.structure,
+        activeSheet.data,
+        updateActiveSheetData,
+        getElementMapping(),
+    )
+
     return (
         <Panel id={props.id}>
             <PanelHeader
@@ -36,8 +42,7 @@ const Editor = props => {
                 Sheets Editor
             </PanelHeader>
             <Div>
-                <SheetTitle text="foo" updateFunction={(data) => updateActiveSheetData(1, data)} /> 
-                <TextFrame updateFunction={(data) => updateActiveSheetData(2, data)} />
+                {sheetBody}
             </Div>
         </Panel>
     )

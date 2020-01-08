@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import "./SheetTitle.css"
 
 const SheetTitle = props => {
-    const { updateFunction } = props;
+    const { params, data, updateFunction } = props;
     const inputRef = useRef(null);
     const [inputVisible, setInputVisible] = useState(false);
-    const [text, setText] = useState(props.text);
+    const [text, setText] = useState(data ? data : params.title);
 
     function onClickOutSide(e) {
         if (inputRef.current && !inputRef.current.contains(e.target)) {

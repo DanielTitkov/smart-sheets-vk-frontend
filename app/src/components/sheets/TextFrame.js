@@ -3,8 +3,8 @@ import { FormLayout, Textarea } from '@vkontakte/vkui';
 import './TextFrame.css';
 
 const TextFrame = props => {
-    const [ value, setValue ] = useState(null);
-    const { title, desc, imageURL, updateFunction } = props
+    const { params, data, updateFunction } = props
+    const [ value, setValue ] = useState(data);
 
     const handleChange = e => {
         setValue(e.target.value);
@@ -15,14 +15,14 @@ const TextFrame = props => {
         <div className="TextFrame">
             <FormLayout>
                 <div className="TextFrame-header">
-                    { imageURL && (
+                    { params.imageURL && (
                         <div className="TextFrame-header-image">
-                            <img src={ imageURL } />
+                            <img src={ params.imageURL } />
                         </div>
                     ) }
                     <div className="TextFrame-header-text">
-                        <h2>{ title }</h2>
-                        <h3>{ desc }</h3>
+                        <h2>{ params.title }</h2>
+                        <h3>{ params.desc }</h3>
                     </div>
                 </div>
                 <Textarea

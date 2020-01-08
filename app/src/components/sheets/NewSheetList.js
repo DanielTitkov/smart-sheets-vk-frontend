@@ -15,14 +15,14 @@ const NewSheetList = props => {
                 {
                     id: 1,
                     type: "SheetTitle",
-                    props: {
+                    params: {
                         title: "Назовите проблему",
                     },
                 },
                 {
                     id: 2,
                     type: "TextFrame",
-                    props: {
+                    params: {
                         title: "Плюс",
                         desc: "Тут опишите, что вам хорошо и славно",
                         imageURL: "",
@@ -31,7 +31,7 @@ const NewSheetList = props => {
                 {
                     id: 3, 
                     type: "TextFrame",
-                    props: {
+                    params: {
                         title: "Минус",
                         desc: "Тут опишите, что вам плохо и не очень",
                         imageURL: "",
@@ -40,7 +40,7 @@ const NewSheetList = props => {
                 {
                     id: 4,
                     type: "TextFrame",
-                    props: {
+                    params: {
                         title: "Интересно",
                         desc: "Тут опишите, что не вошло в предыдущие поля",
                         imageURL: "",
