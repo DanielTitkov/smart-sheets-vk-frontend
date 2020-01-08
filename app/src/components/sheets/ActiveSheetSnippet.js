@@ -27,7 +27,7 @@ function ActiveSheetSnippet(props) {
                         multiline
                         size='l'
                         description={ 
-                            activeSheet.title
+                            activeSheet.type
                         }
                         bottomContent={
                             <div>
@@ -35,8 +35,7 @@ function ActiveSheetSnippet(props) {
                             </div>
                         }
                     >
-                        { activeSheet.title }
-                        <p>Status: { activeSheet.title }</p>
+                        { activeSheet.data[activeSheet.titleElementId] }
                     </Cell>
                 </List>
             </Group>

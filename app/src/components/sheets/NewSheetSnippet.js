@@ -20,7 +20,7 @@ const NewSheetSnippet = props => {
         <div className="NewSheetSnippet" onClick={ () => openModal(modal) }>
             <div className="NewSheetSnippet-image" style={ { backgroundImage: 'url(' + sheet.imageURL + ')'} }></div>
             <div className="NewSheetSnippet-content">
-                <h4 className="NewSheetSnippet-title">{ sheet.title }</h4>
+                <h4 className="NewSheetSnippet-title">{ sheet.type }</h4>
                 <p className="NewSheetSnippet-desc">{ sheet.desc }</p>
             </div>
         </div>

@@ -4,7 +4,7 @@ import './TextFrame.css';
 
 const TextFrame = props => {
     const { params, data, updateFunction } = props
-    const [ value, setValue ] = useState(data);
+    const [ value, setValue ] = useState(data ? data : "");
 
     const handleChange = e => {
         setValue(e.target.value);

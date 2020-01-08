@@ -57,7 +57,7 @@ const SheetDescModal = props => {
                     </Cell>
                     <Cell>
                         <InfoRow title="Название">
-                            { sheet.title }
+                            { sheet.type }
                         </InfoRow>
                     </Cell>
                     <Cell>

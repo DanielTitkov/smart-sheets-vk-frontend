@@ -8,9 +8,10 @@ const NewSheetList = props => {
     const sheets = [
         {
             id: 1,
-            title: "Плюс-минус-интересно",
+            type: "Плюс-минус-интересно",
             desc: "Техника, которая помогает раскласть всякое по полочками, но без смешных шляп",
             imageURL: "https://unsplash.it/800/600?image=59",
+            titleElementId: 1,
             structure: [
                 {
                     id: 1,
@@ -51,17 +52,19 @@ const NewSheetList = props => {
         },
         {
             id: 2,
-            title: "Шесть шляп мышления",
+            type: "Шесть шляп мышления",
             desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-            imageURL: "https://unsplash.it/800/600?image=59",      
+            imageURL: "https://unsplash.it/800/600?image=59",
+            titleElementId: 1, 
             structure: [],
             data: null,
         },
         {
             id: 3,
-            title: "Шесть шляп мышления",
+            type: "Шесть шляп мышления",
             desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-            imageURL: "https://unsplash.it/800/600?image=59",     
+            imageURL: "https://unsplash.it/800/600?image=59",
+            titleElementId: 1,
             structure: [],
             data: null,
         },
