@@ -6,7 +6,7 @@ export const setActiveSheet = (sheet) => {
         const { activeSheet } = getState().sheets;
         let newSheet = null;
         if (sheet) {
-            newSheet = activeSheet && (activeSheet.id === sheet.id) ? activeSheet : sheet;
+            newSheet = activeSheet && activeSheet.id && (activeSheet.id === sheet.id) ? activeSheet : sheet;
         }
         dispatch({
             type: "SET_ACTIVE_SHEET", 

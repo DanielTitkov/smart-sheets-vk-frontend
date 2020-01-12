@@ -7,7 +7,7 @@ const NewSheetList = props => {
     // const { sheets } = props;
     const sheets = [
         {
-            id: 1,
+            // id: 1,
             type: "Плюс-минус-интересно",
             desc: "Техника, которая помогает раскласть всякое по полочками, но без смешных шляп",
             imageURL: "https://unsplash.it/800/600?image=59",
@@ -51,7 +51,7 @@ const NewSheetList = props => {
             data: null,
         },
         {
-            id: 2,
+            // id: 2,
             type: "Шесть шляп мышления",
             desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
             imageURL: "https://unsplash.it/800/600?image=59",
@@ -60,8 +60,8 @@ const NewSheetList = props => {
             data: null,
         },
         {
-            id: 3,
-            type: "Шесть шляп мышления",
+            // id: 3,
+            type: "Хороший суп злой суп",
             desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
             imageURL: "https://unsplash.it/800/600?image=59",
             titleElementId: 1,
@@ -76,7 +76,7 @@ const NewSheetList = props => {
                     sheets.map(sheet => {
                         return (
                             <NewSheetSnippet 
-                                key={ sheet.id }
+                                key={ sheet.type }
                                 sheet={ sheet }
                             />
                         )
