@@ -7,17 +7,20 @@ import ErrorSnackbar from '../components/interface/ErrorSnackbar';
 import UserSnippet from '../components/user/UserSnippet';
 import SheetSnippetList from '../components/sheets/SheetShippetList';
 import ActiveSheetSnippet from '../components/sheets/ActiveSheetSnippet';
+import { getRecentSheets } from '../store/actions/sheetsActions';
 
 const mapStateToProps = (state) => {
 	return {
 		currentUser: state.user.currentUser,
 		userError: state.user.error,
+		recentSheets: state.sheets.recentSheets,
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
 		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
+		getRecentSheets: () => dispatch(getRecentSheets()),
     }
 }
 
@@ -26,10 +29,15 @@ const Home = (props) => {
 		id, currentUser, userError,
 		openPopout, closePopout,
 		setActivePanel,
+		recentSheets, getRecentSheets,
 	} = props;
 
-	const [activeTab, setActiveTab] = useState("new");
+	// const [activeTab, setActiveTab] = useState("new");
 	const [snackbar, setSnackbar] = useState(null);
+
+	useEffect(() => {
+		getRecentSheets();
+	}, [])
 
 	return (
 		<Panel id={id}>
@@ -37,7 +45,7 @@ const Home = (props) => {
 			<UserSnippet currentUser={ currentUser } />
 			<ActiveSheetSnippet />
             <Group>
-				<SheetSnippetList />
+				<SheetSnippetList sheets={ recentSheets } />
 				<Div>
 					<Button 
 						size="xl" 
@@ -54,15 +62,6 @@ const Home = (props) => {
 						onClick={ () => setActivePanel("profilesettings") } 
 					>
 						{ "Edit profile" } 
-					</Button>
-				</Div>
-				<Div>
-					<Button 
-						size="xl" 
-						level="2" 
-						onClick={ () => setActivePanel("editor") } 
-					>
-						{ "Pagie Editor" } 
 					</Button>
 				</Div>
             </Group>	

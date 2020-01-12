@@ -1,5 +1,5 @@
-import panelReducer from './panelReducer';
 import { combineReducers } from 'redux';
+import panelReducer from './panelReducer';
 import validationReducer from './validationReducer';
 import userReducer from './userReducer';
 import modalReducer from './modalReducer';

@@ -1,5 +1,7 @@
 const initState = {
     activeSheet: null,
+    recentSheets: null,
+    sheetBlueprints: null,
 }
 
 const sheetsReducer = (state=initState, action) => {
@@ -19,7 +21,17 @@ const sheetsReducer = (state=initState, action) => {
                         [action.id] : action.data,
                     }
                 }
-            }
+            };
+        case "GET_RECENT_SHEETS":
+            return {
+                ...state,
+                recentSheets: action.sheets
+            };
+        case "GET_SHEET_BLUEPRINTS":
+            return {
+                ...state,
+                sheetBlueprints: action.blueprints
+            };
         default:
             return state;
     }
