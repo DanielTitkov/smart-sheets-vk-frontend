@@ -8,9 +8,13 @@ const TextFrame = props => {
 
     const handleChange = e => {
         setValue(e.target.value);
-        updateFunction(value);
-    } 
+    }
 
+    useEffect(() => {
+        updateFunction(value);
+        console.log(value)
+    }, [value])
+    
     return (
         <div className="TextFrame">
             <FormLayout>
