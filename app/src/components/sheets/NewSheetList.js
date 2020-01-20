@@ -13,7 +13,7 @@ const NewSheetList = props => {
                         return (
                             <NewSheetSnippet 
                                 key={ blueprint.type }
-                                sheet={ blueprint }
+                                blueprint={ blueprint }
                             />
                         )
                     })

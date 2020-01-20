@@ -27,7 +27,7 @@ function ActiveSheetSnippet(props) {
                         multiline
                         size='l'
                         description={ 
-                            activeSheet.type
+                            activeSheet.blueprint.type
                         }
                         bottomContent={
                             <div>
@@ -35,7 +35,7 @@ function ActiveSheetSnippet(props) {
                             </div>
                         }
                     >
-                        { activeSheet.data[activeSheet.titleElementId] }
+                        { activeSheet.data[activeSheet.blueprint.titleElementId] }
                     </Cell>
                 </List>
             </Group>

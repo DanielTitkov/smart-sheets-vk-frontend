@@ -14,14 +14,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const NewSheetSnippet = props => {
-    const { sheet, openModal, closeModal } = props;
-    const modal = <SheetDescModal sheet={sheet} />
+    const { blueprint, openModal, closeModal } = props;
+    const modal = <SheetDescModal blueprint={blueprint} />
     return (
         <div className="NewSheetSnippet" onClick={ () => openModal(modal) }>
-            <div className="NewSheetSnippet-image" style={ { backgroundImage: 'url(' + sheet.imageURL + ')'} }></div>
+            <div className="NewSheetSnippet-image" style={ { backgroundImage: 'url(' + blueprint.imageUrl + ')'} }></div>
             <div className="NewSheetSnippet-content">
-                <h4 className="NewSheetSnippet-title">{ sheet.type }</h4>
-                <p className="NewSheetSnippet-desc">{ sheet.desc }</p>
+                <h4 className="NewSheetSnippet-title">{ blueprint.type }</h4>
+                <p className="NewSheetSnippet-desc">{ blueprint.desc }</p>
             </div>
         </div>
     )

@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 const Editor = props => {
     const { activeSheet, setActivePanel, updateActiveSheetData } = props;
     const sheetBody = buildSheetStructure(
-        activeSheet.structure,
+        activeSheet.blueprint.structure,
         activeSheet.data,
         updateActiveSheetData,
         getElementMapping(),

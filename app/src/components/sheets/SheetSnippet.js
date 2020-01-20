@@ -20,12 +20,12 @@ const SheetSnippet = props => {
         <div className="SheetSnippet">
             <Cell
                 before={
-                    sheet.imageURL && <Avatar 
+                    sheet.blueprint.imageUrl && <Avatar 
                         type="image"
-                        src={ sheet.imageURL } 
+                        src={ sheet.blueprint.imageUrl } 
                     />
                 }
-                description={ sheet.type + " | " + sheet.updateTime }
+                description={ sheet.blueprint.type + " | " + sheet.updated }
                 asideContent={
                     <div className="SheetSnippet-controls">
                         <Button 
@@ -41,7 +41,7 @@ const SheetSnippet = props => {
                     </div>
                 }
             >
-                { sheet.data[sheet.titleElementId] } 
+                { sheet.data[sheet.blueprint.titleElementId] } 
             </Cell>
         </div>
     )

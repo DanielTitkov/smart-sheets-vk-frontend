@@ -5,7 +5,7 @@ import { setActivePanel } from '../store/actions/panelActions';
 import { connect } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
 import UserSnippet from '../components/user/UserSnippet';
-import SheetSnippetList from '../components/sheets/SheetShippetList';
+import SheetList from '../components/sheets/SheetList';
 import ActiveSheetSnippet from '../components/sheets/ActiveSheetSnippet';
 import { getRecentSheets } from '../store/actions/sheetsActions';
 
@@ -45,7 +45,7 @@ const Home = (props) => {
 			<UserSnippet currentUser={ currentUser } />
 			<ActiveSheetSnippet />
             <Group>
-				<SheetSnippetList sheets={ recentSheets } />
+				<SheetList sheets={ recentSheets } />
 				<Div>
 					<Button 
 						size="xl" 

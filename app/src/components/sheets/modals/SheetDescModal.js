@@ -20,13 +20,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
 		openModal: (modal) => dispatch(openModal(modal)),
         closeModal: () => dispatch(closeModal()),
-        setActiveSheet: (sheet) => dispatch(setActiveSheet(sheet)),
+        setActiveSheet: (blueprint) => dispatch(setActiveSheet(blueprint)),
         setActivePanel: (panel) => dispatch(setActivePanel(panel)),
     }
 }
 
 const SheetDescModal = props => {
-    const { sheet, closeModal, setActiveSheet, setActivePanel } = props;
+    const { blueprint, closeModal, setActiveSheet, setActivePanel } = props;
     return (
         <ModalRoot activeModal={ MODALS_ORDER[0] }>
             <ModalPage
@@ -45,7 +45,7 @@ const SheetDescModal = props => {
                         </React.Fragment>
                     )}
                     >
-                        { sheet.title }
+                        { blueprint.title }
                     </ModalPageHeader>
                 }
                 onClose={closeModal}
@@ -53,16 +53,16 @@ const SheetDescModal = props => {
             >
                 <List>
                     <Cell className="SheetDescModal-image">
-                        <img src={ sheet.imageURL } />
+                        <img src={ blueprint.imageUrl } />
                     </Cell>
                     <Cell>
                         <InfoRow title="Название">
-                            { sheet.type }
+                            { blueprint.type }
                         </InfoRow>
                     </Cell>
                     <Cell>
                         <InfoRow title="Описание">
-                            { sheet.desc }
+                            { blueprint.desc }
                         </InfoRow>
                     </Cell>
                 </List>
@@ -71,7 +71,7 @@ const SheetDescModal = props => {
                         stretched 
                         size="xl"
                         onClick={ () => {
-                            setActiveSheet(sheet);
+                            setActiveSheet(blueprint);
                             closeModal();
                             setActivePanel("editor");
                         } }

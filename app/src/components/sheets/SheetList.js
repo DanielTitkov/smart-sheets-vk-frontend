@@ -3,7 +3,7 @@ import { List, Group, Cell } from '@vkontakte/vkui';
 import SheetSnippet from './SheetSnippet';
 
 
-const SheetSnippetList = props => {
+const SheetList = props => {
     const { sheets } = props;
     return (
         <List>
@@ -22,4 +22,4 @@ const SheetSnippetList = props => {
     )
 }
 
-export default SheetSnippetList
+export default SheetList
