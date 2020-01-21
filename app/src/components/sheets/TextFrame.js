@@ -12,7 +12,6 @@ const TextFrame = props => {
 
     useEffect(() => {
         updateFunction(value);
-        console.log(value)
     }, [value])
     
     return (

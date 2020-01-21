@@ -26,63 +26,29 @@ export const updateActiveSheetData = (id, data) => {
 };
 
 export const getRecentSheets = () => {
-    const sheets = [
-        {
-            id: 2,
-            created: '2020-01-18T00:44:01.359398Z',
-            updated: '2020-01-18T00:44:46.760607Z',
-            blueprint: {
-                id: 2,
-                type: 'Плюс-минус-интересно',
-                desc: 'Техника, которая помогает раскласть всякое по полочками, но без смешных шляп',
-                imageUrl: 'https://unsplash.it/800/600?image=59',
-                titleElementId: 1,
-                structure: [
-                    {
-                        id: 1,
-                        type: 'SheetTitle',
-                        params: {
-                            title: 'Назовите проблему'
-                        }
-                    },
-                    {
-                        id: 2,
-                        type: 'TextFrame',
-                        params: {
-                            desc: 'Тут опишите, что вам хорошо и славно',
-                            title: 'Плюс',
-                            imageURL: ''
-                        }
-                    },
-                    {
-                        id: 3,
-                        type: 'TextFrame',
-                        params: {
-                            desc: 'Тут опишите, что вам плохо и не очень',
-                            title: 'Минус',
-                            imageURL: ''
-                        }
-                    },
-                    {
-                        id: 4,
-                        type: 'TextFrame',
-                        params: {
-                            desc: 'Тут опишите, что не вошло в предыдущие поля',
-                            title: 'Интересно',
-                            imageURL: ''
-                        }
-                    }
-                ]
-            },
-            data: {
-                1: "НАХУЙ так ЖИТЬ?",
-                2: "FOOOOOOOOOOOOOOOOOO!",
-                3: "OOOOOOOOOOOOOOOOOHHHHHHH NOOOOOOOOOOOOOOOOOOOOOOO",
-            },
-        }
-    ]
     return (dispatch, getState) => {
-        dispatch({ type: "GET_RECENT_SHEETS", sheets: sheets });
+        const url = appConfig.API_URL;
+        const { vkquery } = getState().validation;
+        const params = {
+            ...vkquery.query,
+        }       
+        axios.get(url + "sheets/", {
+            params: params
+        })
+        .then(response => {
+            console.log("RESPONSE", response.data);
+            dispatch({
+                type: "GET_RECENT_SHEETS",
+                sheets: response.data
+            })
+        })
+        .catch(err => {
+            console.log("ERROR", err)
+            dispatch({
+                type: "GET_INVENTORIES_ERROR",
+                error: err
+            })
+        });
     }
 }
 
