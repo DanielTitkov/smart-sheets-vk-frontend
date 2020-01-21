@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 		currentUser: state.user.currentUser,
 		userError: state.user.error,
 		recentSheets: state.sheets.recentSheets,
+		sheetsError: state.sheets.error,
 	}
 }
 
@@ -28,16 +29,23 @@ const Home = (props) => {
 	const { 
 		id, currentUser, userError,
 		openPopout, closePopout,
-		setActivePanel,
-		recentSheets, getRecentSheets,
+		setActivePanel, 
+		recentSheets, getRecentSheets, sheetsError,
 	} = props;
 
-	// const [activeTab, setActiveTab] = useState("new");
 	const [snackbar, setSnackbar] = useState(null);
-
+	const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
+	
 	useEffect(() => {
 		getRecentSheets();
 	}, [])
+
+	
+	useEffect(() => {
+		if (sheetsError) {
+			setSnackbar(errorSnackbar)
+		}
+	}, [sheetsError])
 
 	return (
 		<Panel id={id}>

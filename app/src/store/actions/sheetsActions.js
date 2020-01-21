@@ -38,14 +38,14 @@ export const getRecentSheets = () => {
         .then(response => {
             console.log("RESPONSE", response.data);
             dispatch({
-                type: "GET_RECENT_SHEETS",
+                type: "GET_RECENT_SHEETS_SUCCESS",
                 sheets: response.data
             })
         })
         .catch(err => {
             console.log("ERROR", err)
             dispatch({
-                type: "GET_INVENTORIES_ERROR",
+                type: "GET_RECENT_SHEET_ERROR",
                 error: err
             })
         });
