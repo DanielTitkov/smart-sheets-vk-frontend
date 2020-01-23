@@ -33,10 +33,15 @@ const sheetsReducer = (state=initState, action) => {
                 ...state,
                 error: action.error
             };
-        case "GET_SHEET_BLUEPRINTS":
+        case "GET_SHEET_BLUEPRINTS_SUCCESS":
             return {
                 ...state,
                 sheetBlueprints: action.blueprints
+            };
+        case "GET_SHEET_BLUEPRINTS_ERROR":
+            return {
+                ...state,
+                error: action.error
             };
         default:
             return state;

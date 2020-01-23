@@ -35,17 +35,16 @@ const Home = (props) => {
 
 	const [snackbar, setSnackbar] = useState(null);
 	const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
-	
-	useEffect(() => {
-		getRecentSheets();
-	}, [])
 
-	
 	useEffect(() => {
 		if (sheetsError) {
 			setSnackbar(errorSnackbar)
 		}
 	}, [sheetsError])
+
+	useEffect(() => {
+		getRecentSheets();
+	}, [])
 
 	return (
 		<Panel id={id}>
