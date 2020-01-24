@@ -38,6 +38,15 @@ const sheetsReducer = (state=initState, action) => {
                 ...state,
                 sheetBlueprints: action.blueprints
             };
+        case "POST_ACTIVE_SHEET_SUCCESS":
+            return {
+                ...state,
+            };
+        case "POST_ACTIVE_SHEET_ERROR":
+            return {
+                ...state,
+                error: action.error
+            };         
         case "GET_SHEET_BLUEPRINTS_ERROR":
             return {
                 ...state,

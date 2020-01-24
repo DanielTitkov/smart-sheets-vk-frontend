@@ -72,3 +72,30 @@ export const getSheetBlueprints = () => {
         });
     }
 }
+
+export const postActiveSheet = () => {
+    return (dispatch, getState) => {
+        const url = appConfig.API_URL;
+        const { activeSheet } = getState().sheets;
+        const { vkquery } = getState().validation;
+
+        console.log('SHEET', activeSheet);
+
+        axios.post(
+            url + 'sheets/', 
+            activeSheet, 
+            {
+                params: {
+                    ...vkquery.query,
+                }
+            }
+        )
+        .then(response => {
+            dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });
+        })
+        .catch(err => {
+            console.log("ERROR", err);
+            dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
+        });
+    }
+};

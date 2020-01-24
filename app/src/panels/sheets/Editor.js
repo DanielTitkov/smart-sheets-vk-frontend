@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Panel, PanelHeader, HeaderButton, platform, Div, IOS, Button, Group, List, Cell } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
-import { updateActiveSheetData } from '../../store/actions/sheetsActions';
+import { updateActiveSheetData, postActiveSheet } from '../../store/actions/sheetsActions';
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
 
 const osname = platform();
@@ -13,6 +13,7 @@ const osname = platform();
 const mapStateToProps = (state) => {
 	return {
         activeSheet: state.sheets.activeSheet,
+		sheetsError: state.sheets.error,
     }
 }
 
@@ -20,17 +21,25 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setActivePanel: (panel) => dispatch(setActivePanel(panel)),
         updateActiveSheetData: (id, data) => dispatch(updateActiveSheetData(id, data)),
+        postActiveSheet: () => dispatch(postActiveSheet()),
     }
 }
 
 const Editor = props => {
-    const { activeSheet, setActivePanel, updateActiveSheetData } = props;
+    const { 
+        activeSheet, setActivePanel, updateActiveSheetData,
+        postActiveSheet, sheetsError,
+    } = props;
     const sheetBody = buildSheetStructure(
         activeSheet.blueprint.structure,
         activeSheet.data,
         updateActiveSheetData,
         getElementMapping(),
     )
+
+    useEffect(() => {
+        return () => postActiveSheet();
+    }, []);
 
     return (
         <Panel id={props.id}>
