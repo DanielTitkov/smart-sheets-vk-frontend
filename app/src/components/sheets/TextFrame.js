@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FormLayout, Textarea } from '@vkontakte/vkui';
 import './TextFrame.css';
+import { newDataObject } from '../../utils/sheetsBuilder';
 
 const TextFrame = props => {
     const { params, data, updateFunction } = props
-    const [ value, setValue ] = useState(data ? data : "");
+    const [ value, setValue ] = useState(data ? data.content : "");
 
     const handleChange = e => {
         setValue(e.target.value);

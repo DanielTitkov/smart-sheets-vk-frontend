@@ -6,6 +6,7 @@ import { setActivePanel } from '../../store/actions/panelActions';
 import { connect } from 'react-redux';
 import "./SheetSnippet.css";
 import { setActiveSheet } from '../../store/actions/sheetsActions';
+import { getElementData, getSheetTitle } from '../../utils/sheetsBuilder';
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const SheetSnippet = props => {
     const { sheet, setActivePanel, setActiveSheet } = props;
+    const sheetTitle = getSheetTitle(sheet);
     return (
         <div className="SheetSnippet">
             <Cell
@@ -41,7 +43,7 @@ const SheetSnippet = props => {
                     </div>
                 }
             >
-                { sheet.data[sheet.blueprint.titleElementId] } 
+                { sheetTitle } 
             </Cell>
         </div>
     )

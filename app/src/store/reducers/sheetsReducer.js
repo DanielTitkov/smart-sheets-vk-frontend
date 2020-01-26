@@ -17,10 +17,11 @@ const sheetsReducer = (state=initState, action) => {
                 ...state,
                 activeSheet: {
                     ...state.activeSheet,
-                    data: {
-                        ...state.activeSheet.data,
-                        [action.id] : action.data,
-                    }
+                    // data: {
+                    //     ...state.activeSheet.data,
+                    //     [action.id] : action.data,
+                    // },
+                    data: state.activeSheet.data.map(d => (d.elementId === action.id) ? action.data : d)
                 }
             };
         case "GET_RECENT_SHEETS_SUCCESS":

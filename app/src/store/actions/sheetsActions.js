@@ -1,5 +1,6 @@
 import appConfig from "../../config/appConfig"
 import axios from 'axios';
+import { getElementData, newDataObject } from "../../utils/sheetsBuilder";
 
 export const setActiveSheet = (sheetOrBlueprint) => {
     return (dispatch, getState) => {
@@ -19,8 +20,9 @@ export const setActiveSheet = (sheetOrBlueprint) => {
     }
 };
 
-export const updateActiveSheetData = (id, data) => {
+export const updateActiveSheetData = (id, dataContent) => {
     return (dispatch, getState) => {
+        const data = newDataObject(id, dataContent)
         dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: data });
     }
 };
@@ -35,6 +37,7 @@ export const getRecentSheets = () => {
             params: params
         })
         .then(response => {
+            console.log(response);
             dispatch({
                 type: "GET_RECENT_SHEETS_SUCCESS",
                 sheets: response.data

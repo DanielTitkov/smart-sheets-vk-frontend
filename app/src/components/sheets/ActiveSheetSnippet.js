@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Group, List, Avatar, Cell, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../../store/actions/panelActions';
+import { getSheetTitle } from '../../utils/sheetsBuilder';
 
 const mapStateToProps = (state) => {
 	return {
@@ -35,7 +36,7 @@ function ActiveSheetSnippet(props) {
                             </div>
                         }
                     >
-                        { activeSheet.data[activeSheet.blueprint.titleElementId] }
+                        { getSheetTitle(activeSheet) }
                     </Cell>
                 </List>
             </Group>
