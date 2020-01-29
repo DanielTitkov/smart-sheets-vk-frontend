@@ -1,3 +1,5 @@
+import { newDataObject } from "../../utils/sheetsBuilder";
+
 const initState = {
     activeSheet: null,
     recentSheets: null,
@@ -21,7 +23,11 @@ const sheetsReducer = (state=initState, action) => {
                     //     ...state.activeSheet.data,
                     //     [action.id] : action.data,
                     // },
-                    data: state.activeSheet.data.map(d => (d.elementId === action.id) ? action.data : d)
+                    data: state.activeSheet.data && state.activeSheet.data.length === state.activeSheet.blueprint.structure.length ? (
+                        state.activeSheet.data.map(d => (d.elementId === action.id) ? action.data : d)
+                    ) : (
+                        state.activeSheet.blueprint.structure.map(e => (e.elementId === action.id) ? action.data : newDataObject(e.elementId))
+                    ) // TODO: this is ugly, change this please
                 }
             };
         case "GET_RECENT_SHEETS_SUCCESS":

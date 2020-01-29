@@ -84,21 +84,26 @@ export const postActiveSheet = () => {
 
         console.log('SHEET', activeSheet);
 
-        axios.post(
-            url + 'sheets/', 
-            activeSheet, 
-            {
-                params: {
-                    ...vkquery.query,
-                }
-            }
-        )
-        .then(response => {
-            dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });
-        })
-        .catch(err => {
-            console.log("ERROR", err);
-            dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
-        });
+        if (activeSheet && activeSheet.id) {
+            console.log("UPDATE");
+        } else if (activeSheet) {
+            console.log("CREATE");
+        }
+        // axios.post(
+        //     url + 'sheets/', 
+        //     activeSheet, 
+        //     {
+        //         params: {
+        //             ...vkquery.query,
+        //         }
+        //     }
+        // )
+        // .then(response => {
+        //     dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });
+        // })
+        // .catch(err => {
+        //     console.log("ERROR", err);
+        //     dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
+        // });
     }
 };
