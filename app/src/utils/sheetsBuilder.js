@@ -2,7 +2,7 @@ import React from 'react';
 import TextFrame from "../components/sheets/TextFrame"
 import SheetTitle from "../components/sheets/SheetTitle"
 
-export const buildSheetStructure = (structure, data, updateFunction, elementMapping) => {
+const buildSheetStructure = (structure, data, updateFunction, elementMapping) => {
     return structure.map(e => {
         return React.createElement(
             elementMapping[e.type], // element
@@ -17,29 +17,26 @@ export const buildSheetStructure = (structure, data, updateFunction, elementMapp
     })
 }
 
-export const getElementMapping = () => {
+const getElementMapping = () => {
     return {
         TextFrame: TextFrame,
         SheetTitle: SheetTitle,
     }
 }
 
-export const getElementData = (dataArray, elementId) => {
-    const dataFiltered = dataArray.filter(d => d.elementId === elementId);
-    if (dataFiltered.length > 1) {
-        console.log("Error: non-unique element id");
-        // ???? do something
-    } 
-    return dataFiltered[0];
+const getElementData = (dataObject, elementId) => {
+    return dataObject[elementId];
 }
 
-export const getSheetTitle = (sheet) => {
-    return getElementData(sheet.data, sheet.blueprint.titleElementId).content;
+const getSheetTitle = (sheet) => {
+    return getElementData(sheet.data, sheet.blueprint.titleElementId);
 }
 
-export const newDataObject = (elementId, content) => {
+const newDataObject = (elementId, content) => {
     return {
         elementId: elementId,
         content: content
     }
 }
+
+export {buildSheetStructure, getElementMapping, getElementData, getSheetTitle, newDataObject}

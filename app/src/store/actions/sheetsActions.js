@@ -22,8 +22,7 @@ export const setActiveSheet = (sheetOrBlueprint) => {
 
 export const updateActiveSheetData = (id, dataContent) => {
     return (dispatch, getState) => {
-        const data = newDataObject(id, dataContent)
-        dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: data });
+        dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: dataContent });
     }
 };
 

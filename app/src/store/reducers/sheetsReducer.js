@@ -1,4 +1,5 @@
 import { newDataObject } from "../../utils/sheetsBuilder";
+import { dataArrayToObject } from "../../utils/arrayUtils";
 
 const initState = {
     activeSheet: null,
@@ -8,32 +9,35 @@ const initState = {
 }
 
 const sheetsReducer = (state=initState, action) => {
+    console.log("ACTIVE SHEET", state.activeSheet)
     switch (action.type) {
         case "SET_ACTIVE_SHEET":
             return {
                 ...state,
-                activeSheet: action.sheet
+                activeSheet: {
+                    ...action.sheet
+                }
             };
         case "UPDATE_ACTIVE_SHEET_DATA":
             return {
                 ...state,
                 activeSheet: {
                     ...state.activeSheet,
-                    // data: {
-                    //     ...state.activeSheet.data,
-                    //     [action.id] : action.data,
-                    // },
-                    data: state.activeSheet.data && state.activeSheet.data.length === state.activeSheet.blueprint.structure.length ? (
-                        state.activeSheet.data.map(d => (d.elementId === action.id) ? action.data : d)
-                    ) : (
-                        state.activeSheet.blueprint.structure.map(e => (e.elementId === action.id) ? action.data : newDataObject(e.elementId))
-                    ) // TODO: this is ugly, change this please
+                    data: {
+                        ...state.activeSheet.data,
+                        [action.id] : action.data,
+                    },
                 }
             };
         case "GET_RECENT_SHEETS_SUCCESS":
             return {
                 ...state,
-                recentSheets: action.sheets
+                recentSheets: action.sheets.map(sheet => {
+                    return {
+                        ...sheet,
+                        data: dataArrayToObject(sheet.data)
+                    }
+                })
             };
         case "GET_RECENT_SHEET_ERROR":
             return {
