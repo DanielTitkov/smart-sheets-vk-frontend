@@ -1,6 +1,7 @@
 import appConfig from "../../config/appConfig"
 import axios from 'axios';
 import { getElementData, newDataObject } from "../../utils/sheetsBuilder";
+import { dataObjectToArray } from "../../utils/arrayUtils";
 
 export const setActiveSheet = (sheetOrBlueprint) => {
     return (dispatch, getState) => {
@@ -83,26 +84,38 @@ export const postActiveSheet = () => {
 
         console.log('SHEET', activeSheet);
 
-        if (activeSheet && activeSheet.id) {
-            console.log("UPDATE");
-        } else if (activeSheet) {
-            console.log("CREATE");
+        if (activeSheet && activeSheet.id) { // update sheet
+            axios.put( // maybe refactor later : only method and url are different
+                url + 'sheets/' + activeSheet.id + "/", 
+                {
+                    blueprintId: activeSheet.blueprint.id,
+                    data: dataObjectToArray(activeSheet.data)
+                },
+                {
+                    params:  {...vkquery.query}   
+                }
+            ).then(response => {
+                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });   
+                dispatch(getRecentSheets()) // maybe use didInvalidate property in state
+            }).catch(err => {
+                dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
+            });
+        } else if (activeSheet) { // create sheet
+            axios.post(
+                url + 'sheets/',
+                {
+                    blueprintId: activeSheet.blueprint.id,
+                    data: dataObjectToArray(activeSheet.data)
+                },   
+                {
+                    params:  {...vkquery.query}   
+                }           
+            ).then(response => {
+                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });   
+                dispatch(getRecentSheets()) // maybe use didInvalidate property in state
+            }).catch(err => {
+                dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
+            });
         }
-        // axios.post(
-        //     url + 'sheets/', 
-        //     activeSheet, 
-        //     {
-        //         params: {
-        //             ...vkquery.query,
-        //         }
-        //     }
-        // )
-        // .then(response => {
-        //     dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });
-        // })
-        // .catch(err => {
-        //     console.log("ERROR", err);
-        //     dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
-        // });
     }
 };

@@ -7,5 +7,10 @@ export const dataArrayToObject = (dataArray) => {
 }
 
 export const dataObjectToArray = (dataObject) => {
-    return [];
+    return Object.entries(dataObject).map(([key, value]) => {
+        return {
+            elementId: key,
+            content: value
+        }
+    });
 }

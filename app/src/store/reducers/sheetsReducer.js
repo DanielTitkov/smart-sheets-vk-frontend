@@ -9,7 +9,6 @@ const initState = {
 }
 
 const sheetsReducer = (state=initState, action) => {
-    console.log("ACTIVE SHEET", state.activeSheet)
     switch (action.type) {
         case "SET_ACTIVE_SHEET":
             return {
