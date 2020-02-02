@@ -52,7 +52,6 @@ const Home = (props) => {
 			<UserSnippet currentUser={ currentUser } />
 			<ActiveSheetSnippet />
             <Group>
-				<SheetList sheets={ recentSheets } />
 				<Div>
 					<Button 
 						size="xl" 
@@ -62,15 +61,7 @@ const Home = (props) => {
 						{ "Add new Smart Sheet" } 
 					</Button>
 				</Div>
-				<Div>
-					<Button 
-						size="xl" 
-						level="2" 
-						onClick={ () => setActivePanel("profilesettings") } 
-					>
-						{ "Edit profile" } 
-					</Button>
-				</Div>
+				<SheetList sheets={ recentSheets } />
             </Group>	
 			{ snackbar }
 		</Panel>

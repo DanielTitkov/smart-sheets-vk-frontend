@@ -24,7 +24,12 @@ function ActiveSheetSnippet(props) {
             <Group title="Активный листочек">
                 <List>
                     <Cell 
-                        before={<Avatar size={72} />}
+                        before={
+                            <Avatar 
+                                size={72} 
+                                src={activeSheet.blueprint.imageUrl}
+                            />
+                        }
                         multiline
                         size='l'
                         description={ 
