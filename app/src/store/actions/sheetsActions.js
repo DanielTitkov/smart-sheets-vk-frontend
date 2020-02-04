@@ -134,7 +134,7 @@ export const deleteSheet = (sheet) => {
                 params:  {...vkquery.query}   
             }
         ).then(response => {
-            dispatch({ type: "DELETE_SHEET_SUCCESS" });   
+            dispatch({ type: "DELETE_SHEET_SUCCESS", id: sheet.id });   
             dispatch(getRecentSheets()) // maybe use didInvalidate property in state
         }).catch(err => {
             dispatch({ type: "DELETE_SHEET_ERROR", error: err });

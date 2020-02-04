@@ -61,7 +61,10 @@ const sheetsReducer = (state=initState, action) => {
                 error: action.error
             };
         case "DELETE_SHEET_SUCCESS":
-            return state;
+            return {
+                ...state,
+                activeSheet: state.activeSheet && (state.activeSheet.id === action.id) ? null : state.activeSheet
+            };
         case "DELETE_SHEET_ERROR":
             return {
                 ...state,
