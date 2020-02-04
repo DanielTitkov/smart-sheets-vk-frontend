@@ -4,6 +4,7 @@ import validationReducer from './validationReducer';
 import userReducer from './userReducer';
 import modalReducer from './modalReducer';
 import sheetsReducer from './sheetsReducer';
+import popoutReducer from './popoutReducer';
 
 const rootReducer = combineReducers({
     panel: panelReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     modal: modalReducer,
     sheets: sheetsReducer,
+    popout: popoutReducer,
 });
 
 export default rootReducer;

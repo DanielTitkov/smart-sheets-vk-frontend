@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 		activePanel: state.panel.activePanel,
 		modal: state.modal.modal,
 		vkquery: state.validation.vkquery,
+		popout: state.popout.popout,
     }
 }
 
@@ -26,16 +27,17 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const App = props => {
-	const { getValidationQuery, vkquery, getCurrentUser, modal, activePanel } = props;
-	const [popout, setPopout] = useState(null);
+	const { getValidationQuery, vkquery, getCurrentUser, modal, popout, activePanel } = props;
 
-	const openPopout = (popout) => {
-		setPopout(popout);
-	}
+	// const [popout, setPopout] = useState(null);
+
+	// const openPopout = (popout) => {
+	// 	setPopout(popout);
+	// }
 	
-	const closePopout = () => {
-		setPopout(null);
-	}
+	// const closePopout = () => {
+	// 	setPopout(null);
+	// }
 
 	useEffect(() => {
 		getValidationQuery();

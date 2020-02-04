@@ -82,8 +82,6 @@ export const postActiveSheet = () => {
         const { activeSheet } = getState().sheets;
         const { vkquery } = getState().validation;
 
-        console.log('SHEET', activeSheet);
-
         if (activeSheet && activeSheet.id) { // update sheet
             axios.put( // maybe refactor later : only method and url are different
                 url + 'sheets/' + activeSheet.id + "/", 
@@ -119,3 +117,27 @@ export const postActiveSheet = () => {
         }
     }
 };
+
+export const deleteSheet = (sheet) => {
+    return (dispatch, getState) => {
+        const url = appConfig.API_URL;
+        const { vkquery } = getState().validation;
+        axios.put( // maybe refactor later 
+            
+            url + 'sheets/' + sheet.id + "/", 
+            {
+                blueprintId: sheet.blueprint.id,
+                data: dataObjectToArray(sheet.data),
+                deleted: true
+            },
+            {
+                params:  {...vkquery.query}   
+            }
+        ).then(response => {
+            dispatch({ type: "DELETE_SHEET_SUCCESS" });   
+            dispatch(getRecentSheets()) // maybe use didInvalidate property in state
+        }).catch(err => {
+            dispatch({ type: "DELETE_SHEET_ERROR", error: err });
+        });
+    }
+}
