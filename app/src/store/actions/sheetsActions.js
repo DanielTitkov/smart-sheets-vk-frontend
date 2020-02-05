@@ -37,7 +37,6 @@ export const getRecentSheets = () => {
             params: params
         })
         .then(response => {
-            console.log(response);
             dispatch({
                 type: "GET_RECENT_SHEETS_SUCCESS",
                 sheets: response.data
@@ -93,7 +92,7 @@ export const postActiveSheet = () => {
                     params:  {...vkquery.query}   
                 }
             ).then(response => {
-                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });   
+                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS", sheet: response.data });   
                 dispatch(getRecentSheets()) // maybe use didInvalidate property in state
             }).catch(err => {
                 dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });
@@ -109,7 +108,7 @@ export const postActiveSheet = () => {
                     params:  {...vkquery.query}   
                 }           
             ).then(response => {
-                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS" });   
+                dispatch({ type: "POST_ACTIVE_SHEET_SUCCESS", sheet: response.data });   
                 dispatch(getRecentSheets()) // maybe use didInvalidate property in state
             }).catch(err => {
                 dispatch({ type: "POST_ACTIVE_SHEET_ERROR", error: err });

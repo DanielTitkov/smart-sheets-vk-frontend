@@ -49,7 +49,13 @@ const sheetsReducer = (state=initState, action) => {
                 sheetBlueprints: action.blueprints
             };
         case "POST_ACTIVE_SHEET_SUCCESS":
-            return state;
+            return {
+                ...state,
+                activeSheet: {
+                    ...action.sheet,
+                    data: dataArrayToObject(action.sheet.data) // maybe move this into action?
+                }
+            };
         case "POST_ACTIVE_SHEET_ERROR":
             return {
                 ...state,
