@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Cell, Avatar, Icon24MoreHorizontal, Group, Button } from '@vkontakte/vkui';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 import Icon24Delete from '@vkontakte/icons/dist/24/delete';
@@ -33,6 +34,7 @@ const SheetSnippet = props => {
         title="Удаление листочка"
         message="Удалить этот листочек?"
     />
+    const updated = moment(sheet.updated).format('DD.MM.YYYY hh:mm');
 
     return (
         <div className="SheetSnippet">
@@ -43,7 +45,7 @@ const SheetSnippet = props => {
                         src={ sheet.blueprint.imageUrl } 
                     />
                 }
-                description={ sheet.blueprint.type + " | " + sheet.updated }
+                description={ sheet.blueprint.type + " | " + updated }
                 asideContent={
                     <div className="SheetSnippet-controls">
                         <Button 
