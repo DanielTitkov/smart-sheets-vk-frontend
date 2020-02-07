@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Cell, Avatar, Div, Button } from '@vkontakte/vkui';
+import { Group, Cell, Avatar, Button } from '@vkontakte/vkui';
 import { connect } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 

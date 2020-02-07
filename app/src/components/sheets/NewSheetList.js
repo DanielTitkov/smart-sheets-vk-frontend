@@ -1,5 +1,5 @@
 import React from 'react'
-import { Div, Button, Cell, List, Group } from '@vkontakte/vkui';
+import { Cell, List, Group } from '@vkontakte/vkui';
 import NewSheetSnippet from './NewSheetSnippet';
 import "./NewSheetList.css";
 

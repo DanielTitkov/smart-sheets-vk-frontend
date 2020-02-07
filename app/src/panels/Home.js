@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Group, PanelHeader, Tabs, TabsItem, Div, Button } from '@vkontakte/vkui';
+import { Panel, Group, PanelHeader, Div, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../store/actions/panelActions';
 import { connect } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
@@ -28,8 +28,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = (props) => {
 	const { 
-		id, currentUser, userError,
-		openPopout, closePopout,
+		id, currentUser, 
+		// userError,
+		// openPopout, closePopout,
 		setActivePanel, 
 		recentSheets, getRecentSheets, sheetsError,
 		recentSheetsLoading,
@@ -42,7 +43,7 @@ const Home = (props) => {
 		if (sheetsError) {
 			setSnackbar(errorSnackbar)
 		}
-	}, [sheetsError])
+	}, [sheetsError, errorSnackbar])
 
 	useEffect(() => {
 		getRecentSheets();

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./SheetTitle.css"
-import { newDataObject } from "../../utils/sheetsBuilder";
 
 const SheetTitle = props => {
     const { params, data, updateFunction } = props;

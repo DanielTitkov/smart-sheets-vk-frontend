@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Spinner, Group, Cell } from '@vkontakte/vkui';
+import { List, Spinner, Cell } from '@vkontakte/vkui';
 import SheetSnippet from './SheetSnippet';
 import "./SheetList.css";
 

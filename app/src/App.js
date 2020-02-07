@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, Spinner, Footer } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -28,16 +28,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const App = props => {
 	const { getValidationQuery, vkquery, getCurrentUser, modal, popout, activePanel } = props;
-
-	// const [popout, setPopout] = useState(null);
-
-	// const openPopout = (popout) => {
-	// 	setPopout(popout);
-	// }
-	
-	// const closePopout = () => {
-	// 	setPopout(null);
-	// }
 
 	useEffect(() => {
 		getValidationQuery();

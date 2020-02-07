@@ -1,4 +1,3 @@
-import { newDataObject } from "../../utils/sheetsBuilder";
 import { dataArrayToObject } from "../../utils/arrayUtils";
 
 const initState = {

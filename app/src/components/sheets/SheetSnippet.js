@@ -1,13 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import { Cell, Avatar, Icon24MoreHorizontal, Group, Button } from '@vkontakte/vkui';
+import { Cell, Avatar, Button } from '@vkontakte/vkui';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 import Icon24Delete from '@vkontakte/icons/dist/24/delete';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { connect } from 'react-redux';
 import "./SheetSnippet.css";
 import { setActiveSheet, deleteSheet } from '../../store/actions/sheetsActions';
-import { getElementData, getSheetTitle } from '../../utils/sheetsBuilder';
+import { getSheetTitle } from '../../utils/sheetsBuilder';
 import { openPopout, closePopout } from '../../store/actions/popoutActions';
 import ConfirmationPopout from '../interface/ConfirmationPopout';
 

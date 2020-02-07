@@ -1,6 +1,6 @@
 export const dataArrayToObject = (dataArray) => {
     let data = {}
-    dataArray && dataArray.map(d => {
+    dataArray && dataArray.forEach(d => {
         data[d.elementId] = d.content
     });
     return data;

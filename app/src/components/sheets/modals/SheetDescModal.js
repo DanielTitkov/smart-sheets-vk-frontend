@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ModalPageHeader from '@vkontakte/vkui/dist/components/ModalPageHeader/ModalPageHeader';
 import { IS_PLATFORM_ANDROID, IS_PLATFORM_IOS } from '@vkontakte/vkui/dist/lib/platform';
 import { ModalRoot, ModalPage, HeaderButton, List, Cell, InfoRow, Div, Button } from '@vkontakte/vkui';
@@ -53,7 +53,7 @@ const SheetDescModal = props => {
             >
                 <List>
                     <Cell className="SheetDescModal-image">
-                        <img src={ blueprint.imageUrl } />
+                        <img src={ blueprint.imageUrl } alt={ blueprint.type } />
                     </Cell>
                     <Cell>
                         <InfoRow title="Название">

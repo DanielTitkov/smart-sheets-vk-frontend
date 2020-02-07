@@ -1,6 +1,4 @@
 import React from 'react'
-import Icon24Add from '@vkontakte/icons/dist/36/add';
-import { Div, Button, Cell } from '@vkontakte/vkui';
 import "./NewSheetSnippet.css";
 import { openModal, closeModal } from '../../store/actions/modalActions';
 import { connect } from 'react-redux';
@@ -14,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const NewSheetSnippet = props => {
-    const { blueprint, openModal, closeModal } = props;
+    const { blueprint, openModal } = props;
     const modal = <SheetDescModal blueprint={blueprint} />
     return (
         <div className="NewSheetSnippet" onClick={ () => openModal(modal) }>
