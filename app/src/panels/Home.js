@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 		userError: state.user.error,
 		recentSheets: state.sheets.recentSheets,
 		sheetsError: state.sheets.error,
+		recentSheetsLoading: state.sheets.loading,
 	}
 }
 
@@ -31,6 +32,7 @@ const Home = (props) => {
 		openPopout, closePopout,
 		setActivePanel, 
 		recentSheets, getRecentSheets, sheetsError,
+		recentSheetsLoading,
 	} = props;
 
 	const [snackbar, setSnackbar] = useState(null);
@@ -61,7 +63,7 @@ const Home = (props) => {
 						{ "Add new Smart Sheet" } 
 					</Button>
 				</Div>
-				<SheetList sheets={ recentSheets } />
+				<SheetList sheets={ recentSheets } loading={ recentSheetsLoading } />
             </Group>	
 			{ snackbar }
 		</Panel>

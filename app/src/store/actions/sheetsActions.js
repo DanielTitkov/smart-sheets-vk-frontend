@@ -29,6 +29,9 @@ export const updateActiveSheetData = (id, dataContent) => {
 
 export const getRecentSheets = () => {
     return (dispatch, getState) => {
+
+        dispatch({type: "SET_LOADING"});
+
         const url = appConfig.API_URL;
         const { vkquery } = getState().validation;
         const params = {...vkquery.query}       

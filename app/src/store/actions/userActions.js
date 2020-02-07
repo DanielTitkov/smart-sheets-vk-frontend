@@ -7,7 +7,6 @@ export const getCurrentUser = () => {
     return (dispatch, getState) => {
         vkconnect.sendPromise('VKWebAppGetUserInfo', {})
         .then(data => {
-            console.log("USER", data)
             dispatch({ type: "GET_VK_USER_SUCCESS", user: data });
             dispatch(sendCurrentUserData()); // save user data to backend
         })

@@ -6,6 +6,7 @@ const initState = {
     recentSheets: null,
     sheetBlueprints: null,
     error: null,
+    loading: false,
 }
 
 const sheetsReducer = (state=initState, action) => {
@@ -31,6 +32,7 @@ const sheetsReducer = (state=initState, action) => {
         case "GET_RECENT_SHEETS_SUCCESS":
             return {
                 ...state,
+                loading: false,
                 recentSheets: action.sheets.map(sheet => {
                     return {
                         ...sheet,
@@ -41,6 +43,7 @@ const sheetsReducer = (state=initState, action) => {
         case "GET_RECENT_SHEET_ERROR":
             return {
                 ...state,
+                loading: false,
                 error: action.error
             };
         case "GET_SHEET_BLUEPRINTS_SUCCESS":
@@ -76,6 +79,11 @@ const sheetsReducer = (state=initState, action) => {
                 ...state,
                 error: action.error
             };
+        case "SET_LOADING":
+            return {
+                ...state,
+                loading: true,
+            }
         default:
             return state;
     }
