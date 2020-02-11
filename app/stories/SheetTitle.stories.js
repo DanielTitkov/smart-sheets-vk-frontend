@@ -5,7 +5,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 export default {
     title: 'SheetTitle',
-  };
+};
 
 const clgFunction = data => {
     console.log("FROM UPDATE FUNCTION: ", data);
@@ -13,7 +13,8 @@ const clgFunction = data => {
 
 export const basic = () => (
     <SheetTitle 
-        text="Кто сильнее - акула или медведь?"
+        data="Кто сильнее - акула или медведь?"
+        params={{title: "Default title"}}
         updateFunction={ data => clgFunction(data) }
     />
 );

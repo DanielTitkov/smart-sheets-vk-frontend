@@ -5,49 +5,93 @@ import NewSheetList from '../src/components/sheets/NewSheetList';
 
 // TODO https://alligator.io/react/storybook-with-redux/
 
-const data = [
+const blueprints = [
     {
-        id: 1,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
+        "id": 2,
+        "type": "Плюс-минус-интересно",
+        "desc": "Техника, которая помогает раскласть всякое по полочками, но без смешных шляп",
+        "imageUrl": "https://unsplash.it/800/600?image=59",
+        "titleElementId": 1,
+        "structure": [
+            {
+                "id": 1,
+                "type": "SheetTitle",
+                "params": {
+                    "title": "Назовите проблему"
+                }
+            },
+            {
+                "id": 2,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что вам хорошо и славно",
+                    "title": "Плюс",
+                    "imageURL": ""
+                }
+            },
+            {
+                "id": 3,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что вам плохо и не очень",
+                    "title": "Минус",
+                    "imageURL": ""
+                }
+            },
+            {
+                "id": 4,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что не вошло в предыдущие поля",
+                    "title": "Интересно",
+                    "imageURL": ""
+                }
+            }
+        ]
     },
     {
-        id: 2,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
-    {
-        id: 3,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
-    {
-        id: 4,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
-    {
-        id: 5,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
-    {
-        id: 6,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
-    {
-        id: 7,
-        title: "Шесть шляп мышления",
-        desc: "Техника, которая помогает раскласть всякое по полочками и смешные шляпы",
-        imageURL: "https://unsplash.it/800/600?image=59",      
-    },
+        "id": 3,
+        "type": "Плюс-минус-интересно",
+        "desc": "Техника, которая помогает раскласть всякое по полочками, но без смешных шляп",
+        "imageUrl": "https://unsplash.it/800/600?image=59",
+        "titleElementId": 1,
+        "structure": [
+            {
+                "id": 1,
+                "type": "SheetTitle",
+                "params": {
+                    "title": "Назовите проблему"
+                }
+            },
+            {
+                "id": 2,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что вам хорошо и славно",
+                    "title": "Плюс",
+                    "imageURL": ""
+                }
+            },
+            {
+                "id": 3,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что вам плохо и не очень",
+                    "title": "Минус",
+                    "imageURL": ""
+                }
+            },
+            {
+                "id": 4,
+                "type": "TextFrame",
+                "params": {
+                    "desc": "Тут опишите, что не вошло в предыдущие поля",
+                    "title": "Интересно",
+                    "imageURL": ""
+                }
+            }
+        ]
+    }
 ]
 
 export default {
@@ -56,7 +100,7 @@ export default {
 
 export const basic = () => (
     <NewSheetList
-        sheets={ data }
+        blueprints={ blueprints }
     />
 );
 
