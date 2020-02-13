@@ -7,7 +7,7 @@ before_install:
   - cd app
 
 install:
-  - npm ci
+  - npm ci --only=production
 
 script: 
   - npm run build
