@@ -43,7 +43,7 @@ const Home = (props) => {
 		if (sheetsError) {
 			setSnackbar(errorSnackbar)
 		}
-	}, [sheetsError, errorSnackbar])
+	}, [sheetsError])
 
 	useEffect(() => {
 		getRecentSheets();
