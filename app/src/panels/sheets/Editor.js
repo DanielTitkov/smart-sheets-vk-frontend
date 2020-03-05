@@ -3,7 +3,7 @@ import {Panel, PanelHeader, HeaderButton, platform, Div, IOS } from '@vkontakte/
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { updateActiveSheetData, postActiveSheet } from '../../store/actions/sheetsActions';
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
@@ -19,17 +19,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setActivePanel: (panel) => dispatch(setActivePanel(panel)),
         updateActiveSheetData: (id, data) => dispatch(updateActiveSheetData(id, data)),
-        postActiveSheet: () => dispatch(postActiveSheet()),
     }
 }
 
 const Editor = props => {
     const { 
-        activeSheet, setActivePanel, updateActiveSheetData,
-        postActiveSheet,
+        updateActiveSheetData
     } = props;
+    const dispatch = useDispatch();
+    const activeSheet = useSelector(state => state.sheets.activeSheet);
     const sheetBody = buildSheetStructure(
         activeSheet.blueprint.structure,
         activeSheet.data,
@@ -38,13 +37,13 @@ const Editor = props => {
     )
 
     useEffect(() => {
-        return () => postActiveSheet();
-    }, []);
+        return () => dispatch(postActiveSheet());
+    }, [dispatch]);
 
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={ () => setActivePanel("home") } >
+                left={<HeaderButton onClick={ () => dispatch(setActivePanel("home")) } >
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </HeaderButton>}
             >

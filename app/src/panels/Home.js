@@ -18,11 +18,10 @@ const Home = (props) => {
 	const recentSheetsLoading = useSelector(state => state.sheets.loading);
 	const recentSheets = useSelector(state => state.sheets.recentSheets);
 	const sheetsError = useSelector(state => state.sheets.error);
-
 	const [snackbar, setSnackbar] = useState(null);
-	const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
-
+	
 	useEffect(() => {
+		const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
 		if (sheetsError) {
 			setSnackbar(errorSnackbar)
 		}
@@ -30,7 +29,7 @@ const Home = (props) => {
 
 	useEffect(() => {
 		dispatch(getRecentSheets());
-	}, [])
+	}, [dispatch])
 
 	return (
 		<Panel id={id}>

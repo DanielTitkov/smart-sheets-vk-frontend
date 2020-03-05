@@ -3,36 +3,24 @@ import { View, Spinner, Footer } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getValidationQuery } from './store/actions/validationActions';
 import { getCurrentUser } from './store/actions/userActions';
 import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
 
-const mapStateToProps = (state) => {
-    return {
-		activePanel: state.panel.activePanel,
-		modal: state.modal.modal,
-		vkquery: state.validation.vkquery,
-		popout: state.popout.popout,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-		getValidationQuery: () => dispatch(getValidationQuery()),
-		getCurrentUser: () => dispatch(getCurrentUser()),
-    }
-}
-
 const App = props => {
-	const { getValidationQuery, vkquery, getCurrentUser, modal, popout, activePanel } = props;
+	const dispatch = useDispatch();
+	const activePanel = useSelector(state => state.panel.activePanel);
+	const modal = useSelector(state => state.modal.modal);
+	const vkquery = useSelector(state => state.validation.vkquery);
+	const popout = useSelector(state => state.popout.popout);
 
 	useEffect(() => {
-		getValidationQuery();
-		getCurrentUser();
-	}, [])
+		dispatch(getValidationQuery());
+		dispatch(getCurrentUser());
+	}, [dispatch])
 
 	if (vkquery) {
 		return (
@@ -52,4 +40,5 @@ const App = props => {
 		)
 	}
 }
-export default connect(mapStateToProps, mapDispatchToProps) (App);
+
+export default App;
