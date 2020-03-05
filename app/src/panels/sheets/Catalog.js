@@ -3,7 +3,7 @@ import {Panel, PanelHeader, HeaderButton, platform, IOS } from '@vkontakte/vkui'
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NewSheetList from '../../components/sheets/NewSheetList';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { getSheetBlueprints } from '../../store/actions/sheetsActions';
@@ -11,31 +11,19 @@ import ErrorSnackbar from '../../components/interface/ErrorSnackbar';
 
 const osname = platform();
 
-const mapStateToProps = (state) => {
-	return {
-        sheetBlueprints: state.sheets.sheetBlueprints,
-		sheetsError: state.sheets.error,
-    }
-}
+const Catalog = props => {   
+    const dispatch = useDispatch();
+    const sheetBlueprints = useSelector(state => state.sheets.sheetBlueprints);
+    const sheetsError = useSelector(state => state.sheets.error);
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setActivePanel: (panel) => dispatch(setActivePanel(panel)),
-        getSheetBlueprints: () => dispatch(getSheetBlueprints()),
-    }
-}
-
-const Catalog = props => {
-    const { setActivePanel, sheetBlueprints, getSheetBlueprints, sheetsError } = props;
-    
     useEffect(() => {
-        getSheetBlueprints();
-    }, [])
+        dispatch(getSheetBlueprints());
+    }, [dispatch])
 
     const [snackbar, setSnackbar] = useState(null);
-	const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
-
+	
 	useEffect(() => {
+        const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
 		if (sheetsError) {
 			setSnackbar(errorSnackbar)
 		}
@@ -44,7 +32,7 @@ const Catalog = props => {
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={ () => setActivePanel("home") } data-to="home">
+                left={<HeaderButton onClick={ () => dispatch(setActivePanel("home")) }>
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </HeaderButton>}
             >
@@ -60,4 +48,4 @@ Catalog.propTypes = {
 	id: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (Catalog);
+export default Catalog;

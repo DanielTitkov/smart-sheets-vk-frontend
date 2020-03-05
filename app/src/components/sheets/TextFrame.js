@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FormLayout, Textarea } from '@vkontakte/vkui';
 import './TextFrame.css';
 
@@ -9,6 +9,8 @@ const TextFrame = props => {
     const handleChange = e => {
         setValue(e.target.value);
     }
+
+    // const updateFunctionCallback = useCallback((value) => updateFunction(value), []);
 
     useEffect(() => {
         updateFunction(value);

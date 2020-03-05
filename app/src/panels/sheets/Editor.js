@@ -3,36 +3,21 @@ import {Panel, PanelHeader, HeaderButton, platform, Div, IOS } from '@vkontakte/
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { updateActiveSheetData, postActiveSheet } from '../../store/actions/sheetsActions';
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
 
 const osname = platform();
 
-const mapStateToProps = (state) => {
-	return {
-        activeSheet: state.sheets.activeSheet,
-		sheetsError: state.sheets.error,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateActiveSheetData: (id, data) => dispatch(updateActiveSheetData(id, data)),
-    }
-}
-
 const Editor = props => {
-    const { 
-        updateActiveSheetData
-    } = props;
     const dispatch = useDispatch();
     const activeSheet = useSelector(state => state.sheets.activeSheet);
+    // const sheetsError = useSelector(state => state.sheets.error);
     const sheetBody = buildSheetStructure(
         activeSheet.blueprint.structure,
         activeSheet.data,
-        updateActiveSheetData,
+        (id, data) => dispatch(updateActiveSheetData(id, data)),
         getElementMapping(),
     )
 
@@ -60,4 +45,4 @@ Editor.propTypes = {
 	id: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (Editor);
+export default Editor;
