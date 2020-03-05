@@ -2,39 +2,22 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Panel, Group, PanelHeader, Div, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../store/actions/panelActions';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
 import UserSnippet from '../components/user/UserSnippet';
 import SheetList from '../components/sheets/SheetList';
 import ActiveSheetSnippet from '../components/sheets/ActiveSheetSnippet';
 import { getRecentSheets } from '../store/actions/sheetsActions';
 
-const mapStateToProps = (state) => {
-	return {
-		currentUser: state.user.currentUser,
-		userError: state.user.error,
-		recentSheets: state.sheets.recentSheets,
-		sheetsError: state.sheets.error,
-		recentSheetsLoading: state.sheets.loading,
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
-		getRecentSheets: () => dispatch(getRecentSheets()),
-    }
-}
-
 const Home = (props) => {
-	const { 
-		id, currentUser, 
-		// userError,
-		// openPopout, closePopout,
-		setActivePanel, 
-		recentSheets, getRecentSheets, sheetsError,
-		recentSheetsLoading,
-	} = props;
+	const { id } = props;
+
+	const dispatch = useDispatch();
+	const currentUser = useSelector(state => state.user.currentUser);
+	// const userError = useSelector(state => state.user.error);
+	const recentSheetsLoading = useSelector(state => state.sheets.loading);
+	const recentSheets = useSelector(state => state.sheets.recentSheets);
+	const sheetsError = useSelector(state => state.sheets.error);
 
 	const [snackbar, setSnackbar] = useState(null);
 	const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
@@ -46,7 +29,7 @@ const Home = (props) => {
 	}, [sheetsError])
 
 	useEffect(() => {
-		getRecentSheets();
+		dispatch(getRecentSheets());
 	}, [])
 
 	return (
@@ -59,7 +42,7 @@ const Home = (props) => {
 					<Button 
 						size="xl" 
 						level="2" 
-						onClick={ () => setActivePanel("catalog") } 
+						onClick={ () => dispatch(setActivePanel("catalog")) } 
 					>
 						{ "Add new Smart Sheet" } 
 					</Button>
@@ -83,4 +66,4 @@ Home.propTypes = {
 	}),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (Home);
+export default Home;
