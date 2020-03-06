@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormLayout, Textarea } from '@vkontakte/vkui';
 import './TextFrame.css';
 
@@ -14,6 +14,7 @@ const TextFrame = props => {
 
     useEffect(() => {
         updateFunction(value);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
     
     return (
