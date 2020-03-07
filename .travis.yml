@@ -3,14 +3,11 @@ node_js:
   - 10.15.1
 cache: npm
 
-before_install: 
-  - cd app
-
 install:
-  - npm ci
+  - make ci
 
 script: 
-  - npm run build
+  - make predeploy
 
 deploy:
   provider: pages

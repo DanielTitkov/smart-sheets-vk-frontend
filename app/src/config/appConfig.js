@@ -1,5 +1,5 @@
 const appConfig = {
-    API_URL: "https://smart-sheets-backend.appspot.com/api/rest/"
+    API_URL: "/api/rest/"
 };
 
 export default appConfig;
