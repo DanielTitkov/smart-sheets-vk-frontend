@@ -9,6 +9,7 @@ import { getCurrentUser } from './store/actions/userActions';
 import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
+import './styles/bright_light.css';
 
 const App = props => {
 	const dispatch = useDispatch();
