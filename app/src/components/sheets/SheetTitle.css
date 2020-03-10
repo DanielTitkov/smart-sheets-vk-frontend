@@ -1,3 +1,26 @@
 .SheetTitle {
-    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.SheetTitle:hover {
+    background-color: #ddd;
+    transition: 0.3s;
+}
+
+.SheetTitle input, .SheetTitle h1 {
+    font-size: 36px;
+    font-family: sans-serif;
+    font-weight: 400;
+    padding: 10px;
+    margin: 10px;
+}
+
+.SheetTitle h1 {
+    border: 1px #fff solid;
+}
+
+.SheetTitle input {
+    border: 1px #bbb solid;
+    width: 90%;
 }
