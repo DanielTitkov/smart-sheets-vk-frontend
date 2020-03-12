@@ -10,8 +10,12 @@ const SheetTitle = props => {
     function onClickOutSide(e) {
         if (inputRef.current && !inputRef.current.contains(e.target)) {
             setInputVisible(false); // Disable text input
-            updateFunction(text); // save data
+            updateFunction(text !== "" ? text : params.title); // save data
         }
+    }
+
+    const onClickInside = e => {
+        setInputVisible(true);
     }
 
     useEffect(() => {
@@ -27,13 +31,14 @@ const SheetTitle = props => {
     return (
         <div className="SheetTitle">
             {inputVisible ? (
-                <input
+                <input autoFocus
                     ref={inputRef} // Set the Ref
                     value={text} // Now input value uses local state
                     onChange={ e => setText(e.target.value) }
+                    placeholder="Введите название листочка"
                 />
             ) : (
-                <h1 onClick={() => setInputVisible(true)}>{text}</h1>
+                <h1 onClick={onClickInside}>{text ? text : params.title}</h1>
             )}
         </div>
     )
