@@ -23,7 +23,7 @@ const UserSnippet = props => {
 					asideContent={
 						<div style={{ display: 'flex' }}>
 							<Button 
-								level="2" 
+								level="3" 
 								onClick={ () => setActivePanel("profilesettings") } 
 							>
 								{ "Profile" } 
