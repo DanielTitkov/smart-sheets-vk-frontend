@@ -2,6 +2,7 @@
 
 /* scheme */
 
+/* 
 .dark-primary-color    { background: #512DA8; }
 .default-primary-color { background: #673AB7; }
 .light-primary-color   { background: #D1C4E9; }
@@ -10,6 +11,8 @@
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
+ */
+
 
 :root {
   --text_primary: #212121; /* обычный текст */
