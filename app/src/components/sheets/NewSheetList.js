@@ -5,7 +5,6 @@ import "./NewSheetList.css";
 
 const NewSheetList = props => {
     const { blueprints } = props;
-    console.log(blueprints);
     return (
         <Group>
             <List className="NewSheetList">  
