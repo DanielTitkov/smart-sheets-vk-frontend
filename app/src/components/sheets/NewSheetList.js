@@ -5,10 +5,11 @@ import "./NewSheetList.css";
 
 const NewSheetList = props => {
     const { blueprints } = props;
+    console.log(blueprints);
     return (
         <Group>
             <List className="NewSheetList">  
-                { blueprints ? (
+                { blueprints && blueprints.length !== 0 ? (
                     blueprints.map(blueprint => {
                         return (
                             <NewSheetSnippet 
