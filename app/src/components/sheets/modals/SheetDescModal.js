@@ -52,8 +52,8 @@ const SheetDescModal = props => {
                 settlingHeight={80}
             >
                 <List>
-                    <Cell className="SheetDescModal-image">
-                        <img src={ blueprint.imageUrl } alt={ blueprint.type } />
+                    <Cell className="SheetDescModal-image-wrap">
+                        <img className="SheetDescModal-image" src={ blueprint.imageUrl } alt={ blueprint.type } />
                     </Cell>
                     <Cell>
                         <InfoRow title="Название">
