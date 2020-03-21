@@ -36,13 +36,22 @@ const SheetSnippet = props => {
     />
     const updated = moment(sheet.updated).format('DD.MM.YYYY hh:mm');
 
+    var avatarStyle = {
+        maxHeight: "100%",
+        maxWidth: "100%",
+        objectFit: "cover",
+        objectPosition: "center",
+      };
+
     return (
         <div className="SheetSnippet">
             <Cell
                 before={
                     sheet.blueprint.imageUrl && <Avatar 
+                        className="SheetSnippet-avatar"
                         type="image"
                         src={ sheet.blueprint.imageUrl } 
+                        style={avatarStyle}
                     />
                 }
                 description={ sheet.blueprint.type + " | " + updated }

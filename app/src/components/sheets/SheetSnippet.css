@@ -2,3 +2,10 @@
     display: inline-block;
     margin-left: 5px;
 }
+
+.SheetSnippet-avatar {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover; 
+    object-position: center;
+}
