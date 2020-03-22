@@ -4,9 +4,10 @@
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
     transition: 0.3s;
+    background-color: var(--header_tint);
 }
 
 .NewSheetSnippet:hover {
@@ -27,7 +28,7 @@
 .NewSheetSnippet-image::before {
     content: "";
     display: block;
-    padding-top: 25%;
+    padding-top: 20%;
 } 
 
 .NewSheetSnippet-content {

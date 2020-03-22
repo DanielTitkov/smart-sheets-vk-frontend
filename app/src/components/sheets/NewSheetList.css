@@ -3,4 +3,5 @@
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: center;
+    background-color: var(--background_page);
 }

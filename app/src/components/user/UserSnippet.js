@@ -1,17 +1,12 @@
 import React from 'react';
 import { Group, Cell, Avatar, Button } from '@vkontakte/vkui';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-		setActivePanel: (panel) => dispatch(setActivePanel(panel)),
-    }
-}
-
 const UserSnippet = props => {
-    const { currentUser, setActivePanel } = props;
+	const dispatch = useDispatch();
+    const { currentUser } = props;
     return (
         <div>
             {currentUser &&
@@ -24,7 +19,7 @@ const UserSnippet = props => {
 						<div style={{ display: 'flex' }}>
 							<Button 
 								level="3" 
-								onClick={ () => setActivePanel("profilesettings") } 
+								onClick={ () => dispatch(setActivePanel("profilesettings")) } 
 							>
 								{ "Profile" } 
 							</Button>
@@ -38,4 +33,4 @@ const UserSnippet = props => {
     )
 }
 
-export default connect(null, mapDispatchToProps)(UserSnippet);
+export default UserSnippet;

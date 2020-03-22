@@ -15,7 +15,6 @@ const osname = platform();
 const Editor = props => {
     const dispatch = useDispatch();
     const activeSheet = useSelector(state => state.sheets.activeSheet);
-    // const sheetsError = useSelector(state => state.sheets.error);
     const sheetBody = buildSheetStructure(
         activeSheet.blueprint.structure,
         activeSheet.data,

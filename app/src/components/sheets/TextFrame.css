@@ -6,7 +6,6 @@
     height: 100%;
     padding: 10px 10px 0 10px;
 }
-/* https://yoksel.github.io/flex-cheatsheet/ */
 
 .TextFrame-header * {
     margin: 0px;
@@ -20,7 +19,6 @@
 .TextFrame-header-text {
     width: 70%;
 }
-
 
 .TextFrame-header-image {
     width: 20%;

@@ -14,7 +14,6 @@ const Home = (props) => {
 
 	const dispatch = useDispatch();
 	const currentUser = useSelector(state => state.user.currentUser);
-	// const userError = useSelector(state => state.user.error);
 	const recentSheetsLoading = useSelector(state => state.sheets.loading);
 	const recentSheets = useSelector(state => state.sheets.recentSheets);
 	const sheetsError = useSelector(state => state.sheets.error);

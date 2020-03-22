@@ -27,6 +27,7 @@
   --header_background: #512DA8; /* header bg color */
   --header_tint: #FFFFFF; /* header controls */
   --text_secondary: #757575; /* sub-texts */
+  --background_page: #ebedf0; /* standart vk backround*/
 }
 
 /* :root {

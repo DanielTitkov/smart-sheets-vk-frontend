@@ -12,7 +12,7 @@ const SheetDetails = props => {
     const { blueprint } = props;
     return (
         blueprint ? (
-            <div>
+            <React.Fragment>
                 <Div className="SheetDetails-image-wrap" style={backgroundImage(blueprint.imageUrl)}></Div>
                 <List>
                     <Cell>
@@ -52,7 +52,7 @@ const SheetDetails = props => {
                         </Div>
                     </Cell>
                 </List>
-            </div>
+            </React.Fragment>
         ) : (
             null
         )

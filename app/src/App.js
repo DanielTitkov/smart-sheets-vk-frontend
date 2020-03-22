@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Spinner, Footer } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-
 import Home from './panels/Home';
 import { useSelector, useDispatch } from 'react-redux';
 import { getValidationQuery } from './store/actions/validationActions';
@@ -9,8 +8,8 @@ import { getCurrentUser } from './store/actions/userActions';
 import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
-import './styles/bright_light.css';
 import Details from './panels/sheets/Details';
+import './styles/bright_light.css';
 
 const App = props => {
 	const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const App = props => {
 		)
 	} else {
 		return (
-			<div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+			<div>
 				<Spinner size="large" style={{ marginTop: 20 }} />
 				<Footer>Loading... If this doesn't go away you may be using the app outside of VK</Footer>
 			</div>
