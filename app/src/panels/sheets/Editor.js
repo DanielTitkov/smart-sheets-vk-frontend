@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Panel, PanelHeader, HeaderButton, platform, Div, IOS } from '@vkontakte/vkui';
+import {Panel, PanelHeader, HeaderButton, platform, Div, IOS, Button } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
@@ -38,6 +38,15 @@ const Editor = props => {
             </PanelHeader>
             <Div className="Editor-sheet-wrap">
                 {sheetBody}
+            </Div>
+            <Div>
+                <Button 
+                    stretched 
+                    size="xl"
+                    onClick={ () => dispatch(setActivePanel("home")) }
+                >
+                    Сохранить и вернуться
+                </Button> 
             </Div>
         </Panel>
     )
