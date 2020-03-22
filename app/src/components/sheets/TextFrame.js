@@ -10,8 +10,6 @@ const TextFrame = props => {
         setValue(e.target.value);
     }
 
-    // const updateFunctionCallback = useCallback((value) => updateFunction(value), []);
-
     useEffect(() => {
         updateFunction(value);
         // eslint-disable-next-line react-hooks/exhaustive-deps

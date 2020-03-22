@@ -1,25 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Group, List, Avatar, Cell, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { getSheetTitle } from '../../utils/sheetsBuilder';
 import { avatarStyle } from '../../styles/inline';
+import { useSelector, useDispatch } from 'react-redux';
 
-const mapStateToProps = (state) => {
-	return {
-        activeSheet: state.sheets.activeSheet,
-        // activeInventoryResponse: state.inventory.activeInventoryResponse
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setActivePanel: (panel) => dispatch(setActivePanel(panel)),
-    }
-}
-
-function ActiveSheetSnippet(props) {
-    const { activeSheet, setActivePanel } = props; 
+const ActiveSheetSnippet = props => {
+    const dispatch = useDispatch();
+    const activeSheet = useSelector(state => state.sheets.activeSheet);
     return (
         activeSheet ? (
             <Group title="Активный листочек">
@@ -39,7 +27,7 @@ function ActiveSheetSnippet(props) {
                         }
                         bottomContent={
                             <div>
-                                <Button onClick={ () => setActivePanel("editor") }>Продолжить</Button>
+                                <Button onClick={ () => dispatch(setActivePanel("editor")) }>Продолжить</Button>
                             </div>
                         }
                     >
@@ -53,4 +41,4 @@ function ActiveSheetSnippet(props) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (ActiveSheetSnippet);
+export default ActiveSheetSnippet;
