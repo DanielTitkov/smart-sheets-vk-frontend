@@ -13,9 +13,9 @@ const sheetsReducer = (state=initState, action) => {
         case "SET_ACTIVE_SHEET":
             return {
                 ...state,
-                activeSheet: {
+                activeSheet: action.sheet && action.sheet.blueprint ? ({
                     ...action.sheet
-                }
+                }) : null
             };
         case "UPDATE_ACTIVE_SHEET_DATA":
             return {

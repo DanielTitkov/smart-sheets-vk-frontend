@@ -10,6 +10,7 @@ import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
 import './styles/bright_light.css';
+import Details from './panels/sheets/Details';
 
 const App = props => {
 	const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const App = props => {
 				<ProfileSettings id="profilesettings" />
 				<Home id="home" />
 				<Catalog id="catalog" />
+				<Details id="details" />
 				<Editor id="editor" />
 			</View>
 		)
