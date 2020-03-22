@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { updateActiveSheetData, postActiveSheet } from '../../store/actions/sheetsActions';
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
+import "./Editor.css";
+
 
 const osname = platform();
 
@@ -34,7 +36,7 @@ const Editor = props => {
             >
                 Sheets Editor
             </PanelHeader>
-            <Div>
+            <Div className="Editor-sheet-wrap">
                 {sheetBody}
             </Div>
         </Panel>

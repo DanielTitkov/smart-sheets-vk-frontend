@@ -10,6 +10,7 @@ import { setActiveSheet, deleteSheet } from '../../store/actions/sheetsActions';
 import { getSheetTitle } from '../../utils/sheetsBuilder';
 import { openPopout, closePopout } from '../../store/actions/popoutActions';
 import ConfirmationPopout from '../interface/ConfirmationPopout';
+import { avatarStyle } from '../../styles/inline';
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -36,13 +37,6 @@ const SheetSnippet = props => {
     />
     const updated = moment(sheet.updated).format('DD.MM.YYYY hh:mm');
 
-    var avatarStyle = {
-        maxHeight: "100%",
-        maxWidth: "100%",
-        objectFit: "cover",
-        objectPosition: "center",
-      };
-
     return (
         <div className="SheetSnippet">
             <Cell
@@ -51,7 +45,7 @@ const SheetSnippet = props => {
                         className="SheetSnippet-avatar"
                         type="image"
                         src={ sheet.blueprint.imageUrl } 
-                        style={avatarStyle}
+                        style={ avatarStyle }
                     />
                 }
                 description={ sheet.blueprint.type + " | " + updated }

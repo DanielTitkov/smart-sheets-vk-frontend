@@ -1,6 +1,7 @@
 import React from 'react';
 import TextFrame from "../components/sheets/TextFrame"
 import SheetTitle from "../components/sheets/SheetTitle"
+import SheetHeader from '../components/sheets/SheetHeader';
 
 const buildSheetStructure = (structure, data, updateFunction, elementMapping) => {
     return structure.map(e => {
@@ -21,6 +22,7 @@ const getElementMapping = () => {
     return {
         TextFrame: TextFrame,
         SheetTitle: SheetTitle,
+        SheetHeader: SheetHeader,
     }
 }
 

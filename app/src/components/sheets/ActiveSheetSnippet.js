@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Group, List, Avatar, Cell, Button } from '@vkontakte/vkui';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { getSheetTitle } from '../../utils/sheetsBuilder';
+import { avatarStyle } from '../../styles/inline';
 
 const mapStateToProps = (state) => {
 	return {
@@ -28,6 +29,7 @@ function ActiveSheetSnippet(props) {
                             <Avatar 
                                 size={72} 
                                 src={activeSheet.blueprint.imageUrl}
+                                style={ avatarStyle }
                             />
                         }
                         multiline
