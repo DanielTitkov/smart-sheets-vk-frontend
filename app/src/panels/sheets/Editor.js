@@ -9,6 +9,7 @@ import { updateActiveSheetData, postActiveSheet } from '../../store/actions/shee
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
 import "./Editor.css";
 import SheetGuide from '../../components/sheets/SheetGuide';
+import SheetHeader from '../../components/sheets/SheetHeader';
 
 
 const osname = platform();
@@ -36,6 +37,9 @@ const Editor = props => {
             >
                 Sheets Editor
             </PanelHeader>
+            <Div className="Editor-image-wrap">
+                <SheetHeader params={ { "imageURL": activeSheet.blueprint.imageUrl } } />
+            </Div>
             <Div className="Editor-guide-wrap">
                 <SheetGuide guide={ activeSheet.blueprint.guide } />
             </Div>

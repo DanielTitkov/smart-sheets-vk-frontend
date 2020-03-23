@@ -1,25 +1,23 @@
 .SheetGuide {
-    transition: 0.3s;
-}
-
-.SheetGuide-controls {
-    background-color: var(--button_primary_background);
-    display: block;
+    padding: 0;
+    background-color: var(--background_page);
 }
 
 .SheetGuide-controls-text {
-    margin: 0 auto;
-    padding: 5px;
-    text-align: center;
-    vertical-align: top;
-    color: var(--header_tint);
-    font-size: 16px;
+    display: block;
+    text-align: right;
+    color: var(--text_secondary);
 }
 
-.SheetGuide-controls-icon {
-    display: inline-block;
+.SheetGuide-body-wrap {
+    padding: 20px;
+    background-color: var(--background_page);
+    transition: 0.3s;
 }
 
 .SheetGuide-body {
-    padding: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    color: var(--text_secondary);
+    background-color: var(--header_tint);
 }
