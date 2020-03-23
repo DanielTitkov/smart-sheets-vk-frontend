@@ -4,6 +4,7 @@ import { backgroundImage } from '../../styles/inline';
 import { setActiveSheet } from '../../store/actions/sheetsActions';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { useDispatch } from 'react-redux';
+import reactHtmlParser from 'react-html-parser';
 import "./SheetDetails.css";
 
 
@@ -23,6 +24,11 @@ const SheetDetails = props => {
                     <Cell multiline>
                         <InfoRow title="Описание" size='l'>
                             { blueprint.desc }
+                        </InfoRow>
+                    </Cell>
+                    <Cell multiline>
+                        <InfoRow title="Инструкция" size='l'>
+                            { reactHtmlParser(blueprint.guide) }
                         </InfoRow>
                     </Cell>
                     <Cell>

@@ -1,0 +1,25 @@
+.SheetGuide {
+    transition: 0.3s;
+}
+
+.SheetGuide-controls {
+    background-color: var(--button_primary_background);
+    display: block;
+}
+
+.SheetGuide-controls-text {
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    vertical-align: top;
+    color: var(--header_tint);
+    font-size: 16px;
+}
+
+.SheetGuide-controls-icon {
+    display: inline-block;
+}
+
+.SheetGuide-body {
+    padding: 10px;
+}
