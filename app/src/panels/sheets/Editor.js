@@ -37,11 +37,9 @@ const Editor = props => {
             >
                 Sheets Editor
             </PanelHeader>
-            <Div className="Editor-image-wrap">
+            <Div className="Editor-header-wrap">
                 <SheetHeader params={ { "imageURL": activeSheet.blueprint.imageUrl } } />
-            </Div>
-            <Div className="Editor-guide-wrap">
-                <SheetGuide guide={ activeSheet.blueprint.guide } />
+                <SheetGuide params={ { "guide": activeSheet.blueprint.guide} } />
             </Div>
             <Div className="Editor-sheet-wrap">
                 {sheetBody}

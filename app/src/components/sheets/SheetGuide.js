@@ -4,11 +4,11 @@ import reactHtmlParser from 'react-html-parser';
 import "./SheetGuide.css";
 
 const SheetGuide = props => {
+    const { params } = props;
     const [ open, setOpen ] = useState(false);
     const style = {
         "display": open ? "block" : "none"
     };
-    const { guide } = props;
     return (
         <div className="SheetGuide">
             <Cell 
@@ -24,7 +24,7 @@ const SheetGuide = props => {
             </Cell>
             <div className="SheetGuide-body-wrap" style={ style }>
                 <div className="SheetGuide-body">
-                    { reactHtmlParser(guide) }
+                    { reactHtmlParser(params.guide) }
                 </div>
             </div>
         </div>
