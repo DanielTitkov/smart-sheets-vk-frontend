@@ -31,9 +31,9 @@ const getElementData = (dataObject, elementId) => {
     return dataObject[elementId];
 }
 
-const getSheetTitle = (sheet) => {
+const getSheetTitle = (sheet, titleField=appConfig.DEFAULT_DATA_FIELD) => {
     const elementData = getElementData(sheet.data, sheet.blueprint.titleElementId)
-    return elementData ? elementData[appConfig.DEFAULT_DATA_FIELD] : null;
+    return elementData ? elementData[titleField] : null;
 }
 
 const newDataObject = (elementId, content) => {
