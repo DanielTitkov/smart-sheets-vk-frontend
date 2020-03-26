@@ -32,6 +32,7 @@ const sheetsReducer = (state=initState, action) => {
             return {
                 ...state,
                 loading: false,
+                error: null,
                 recentSheets: action.sheets.map(sheet => {
                     return {
                         ...sheet,
@@ -48,11 +49,13 @@ const sheetsReducer = (state=initState, action) => {
         case "GET_SHEET_BLUEPRINTS_SUCCESS":
             return {
                 ...state,
+                error: null,
                 sheetBlueprints: action.blueprints
             };
         case "POST_ACTIVE_SHEET_SUCCESS":
             return {
                 ...state,
+                error: null,
                 activeSheet: {
                     ...action.sheet,
                     data: dataArrayToObject(action.sheet.data) // maybe move this into action?
@@ -71,6 +74,7 @@ const sheetsReducer = (state=initState, action) => {
         case "DELETE_SHEET_SUCCESS":
             return {
                 ...state,
+                error: null,
                 activeSheet: state.activeSheet && (state.activeSheet.id === action.id) ? null : state.activeSheet
             };
         case "DELETE_SHEET_ERROR":
