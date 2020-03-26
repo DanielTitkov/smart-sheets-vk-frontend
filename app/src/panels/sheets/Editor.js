@@ -20,7 +20,7 @@ const Editor = props => {
     const sheetBody = buildSheetStructure(
         activeSheet.blueprint.structure,
         activeSheet.data,
-        (id, data) => dispatch(updateActiveSheetData(id, data)),
+        (id, data, field) => dispatch(updateActiveSheetData(id, data, field)),
         getElementMapping(),
     )
 

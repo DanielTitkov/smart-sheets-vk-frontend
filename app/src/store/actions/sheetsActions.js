@@ -20,9 +20,9 @@ export const setActiveSheet = (sheetOrBlueprint) => {
     }
 };
 
-export const updateActiveSheetData = (id, dataContent) => {
+export const updateActiveSheetData = (id, dataContent, dataField) => {
     return (dispatch, getState) => {
-        dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: dataContent });
+        dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: {[dataField]: dataContent} });
     }
 };
 

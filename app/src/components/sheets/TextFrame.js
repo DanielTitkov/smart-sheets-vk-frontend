@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { FormLayout, Textarea } from '@vkontakte/vkui';
+import appConfig from '../../config/appConfig';
 import './TextFrame.css';
 
 const TextFrame = props => {
-    const { params, data, updateFunction } = props
-    const [ value, setValue ] = useState(data ? data : "");
+    const dataField = appConfig.DEFAULT_DATA_FIELD;
+    const { params, data, updateFunction } = props;
+    const [ value, setValue ] = useState(data ? data[dataField] : "");
 
     const handleChange = e => {
         setValue(e.target.value);
     }
 
     useEffect(() => {
-        updateFunction(value);
+        updateFunction(value, dataField);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+    }, [value, dataField])
     
     return (
         <div className="TextFrame">

@@ -15,8 +15,8 @@ const SheetGuide = props => {
                 className="SheetGuide-controls" 
                 asideContent={ 
                     <Switch 
-                        checked= {open } 
-                        onClick={ () => setOpen(!open)} 
+                        checked={ open } 
+                        onChange={ () => setOpen(!open) } 
                     />
                 }
             >

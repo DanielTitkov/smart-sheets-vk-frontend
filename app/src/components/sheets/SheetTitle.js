@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
+import appConfig from "../../config/appConfig";
 import "./SheetTitle.css"
 
 const SheetTitle = props => {
+    const dataField = appConfig.DEFAULT_DATA_FIELD;
     const { params, data, updateFunction } = props;
     const inputRef = useRef(null);
     const [inputVisible, setInputVisible] = useState(false);
-    const [text, setText] = useState(data ? data : params.title);
-
+    const [text, setText] = useState(data ? data[dataField] : params.title);
     function onClickOutSide(e) {
         if (inputRef.current && !inputRef.current.contains(e.target)) {
             setInputVisible(false); // Disable text input
-            updateFunction(text !== "" ? text : params.title); // save data
+            updateFunction(text !== "" ? text : params.title, dataField); // save data
         }
     }
 
