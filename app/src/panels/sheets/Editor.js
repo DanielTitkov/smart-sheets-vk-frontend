@@ -7,9 +7,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { updateActiveSheetData, postActiveSheet } from '../../store/actions/sheetsActions';
 import { buildSheetStructure, getElementMapping } from '../../utils/sheetsBuilder';
-import "./Editor.css";
 import SheetGuide from '../../components/sheets/SheetGuide';
 import SheetHeader from '../../components/sheets/SheetHeader';
+import appConfig from '../../config/appConfig';
+import "./Editor.css";
 
 
 const osname = platform();
@@ -25,7 +26,15 @@ const Editor = props => {
     )
 
     useEffect(() => {
-        return () => dispatch(postActiveSheet());
+        const interval = setInterval(
+            () => {
+                dispatch(postActiveSheet())
+            },
+            appConfig.EDITOR_SAVE_INTERVAL);
+        return () => {
+            clearInterval(interval);
+            dispatch(postActiveSheet())
+        };
     }, [dispatch]);
 
     return (

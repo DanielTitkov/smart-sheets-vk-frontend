@@ -31,7 +31,6 @@ const TextFrame = props => {
                         <h3>{ params.desc }</h3>
                     </div>
                 </div>
-                {/*  put textare into invisible div */}
                 <div className="TextFrame-textarea-wrap"> 
                     <Textarea
                         value={ value }
