@@ -16,7 +16,7 @@ const TextFrame = props => {
         updateFunction(value, dataField);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, dataField])
-    
+
     return (
         <div className="TextFrame">
             <FormLayout>
@@ -31,10 +31,13 @@ const TextFrame = props => {
                         <h3>{ params.desc }</h3>
                     </div>
                 </div>
-                <Textarea
-                    value={ value }
-                    onChange={ handleChange }
-                />
+                {/*  put textare into invisible div */}
+                <div className="TextFrame-textarea-wrap"> 
+                    <Textarea
+                        value={ value }
+                        onChange={ handleChange }
+                    />
+                </div>
             </FormLayout>
         </div>
     )
