@@ -23,8 +23,8 @@ const TextFrame = props => {
                         </div>
                     ) }
                     <div className="TextFrame-header-text">
-                        <h2>{ params.title }</h2>
-                        <h3>{ params.desc }</h3>
+                        { params.title ? (<h2>{ params.title }</h2>) : null }
+                        { params.desc ? (<h3>{ params.desc }</h3>) : null }
                     </div>
                 </div>
                 <div className="TextFrame-textarea-wrap"> 
