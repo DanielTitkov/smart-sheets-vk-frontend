@@ -8,10 +8,6 @@ const TextFrame = props => {
     const { params, data, updateFunction } = props;
     const [ value, setValue ] = useState(data ? data[dataField] : "");
 
-    const handleChange = e => {
-        setValue(e.target.value);
-    }
-
     useEffect(() => {
         updateFunction(value, dataField);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +30,7 @@ const TextFrame = props => {
                 <div className="TextFrame-textarea-wrap"> 
                     <Textarea
                         value={ value }
-                        onChange={ handleChange }
+                        onChange={ e => setValue(e.target.value) }
                     />
                 </div>
             </FormLayout>
