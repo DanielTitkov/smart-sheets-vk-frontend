@@ -5,6 +5,7 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
+import UserSettings from '../../components/user/UserSettings';
 
 const osname = platform();
 
@@ -19,7 +20,8 @@ const Settings = props => {
             >
                 Profile Settings
             </PanelHeader>
-            <Footer>Тут пока ничего нет</Footer>
+            <UserSettings />
+            <Footer>Шифрование пока не работает</Footer>
         </Panel>
     )
 }
