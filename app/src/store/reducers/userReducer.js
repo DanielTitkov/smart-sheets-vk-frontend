@@ -8,7 +8,10 @@ const userReducer = (state=initState, action) => {
         case "GET_VK_USER_SUCCESS":
             return {
                 ...state,
-                currentUser: action.user,
+                currentUser: {
+                    ...state.currentUser,
+                    profile: action.user,
+                },
             }
         case "GET_VK_USER_ERROR":
             return {
@@ -20,6 +23,20 @@ const userReducer = (state=initState, action) => {
                 ...state,
             }
         case "SEND_USER_DATA_ERROR":
+            return {
+                ...state,
+                error: action.error,
+            }
+        case "GET_USER_SETTINGS_SUCCESS":
+            return {
+                ...state,
+                currentUser: {
+                    ...state.currentUser,
+                    settings: action.settings,
+                }
+            };
+                
+        case "GET_USER_SETTINGS_ERROR":
             return {
                 ...state,
                 error: action.error,

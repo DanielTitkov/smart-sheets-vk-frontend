@@ -9,12 +9,12 @@ const UserSnippet = props => {
     const { currentUser } = props;
     return (
         <div>
-            {currentUser &&
+            {currentUser && currentUser.profile &&
 			<Group>
 				<Cell
-					before={currentUser.photo_200 ? <Avatar src={currentUser.photo_200}/> : null}
+					before={currentUser.profile.photo_200 ? <Avatar src={currentUser.profile.photo_200}/> : null}
 					size="l"
-					description={currentUser.city && currentUser.city.title ? currentUser.city.title : ''}
+					description={currentUser.profile.city && currentUser.profile.city.title ? currentUser.profile.city.title : ''}
 					asideContent={
 						<div style={{ display: 'flex' }}>
 							<Button 
@@ -26,7 +26,7 @@ const UserSnippet = props => {
 						</div>
 					}
 				>
-					{`${currentUser.first_name} ${currentUser.last_name}`}
+					{`${currentUser.profile.first_name} ${currentUser.profile.last_name}`}
 				</Cell>
 			</Group>}
         </div>

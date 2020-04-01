@@ -18,19 +18,19 @@ export const getCurrentUser = () => {
 
 export const sendCurrentUserData = () => {
     return (dispatch, getState) => {
-        const { currentUser } = getState().user;
-        const age = getAgeFromBDate(currentUser.bdate);
+        const { profile } = getState().user.currentUser;
+        const age = getAgeFromBDate(profile.bdate);
         const userData = {
             age: age ? age : undefined,
-            sex: currentUser.sex ? currentUser.sex : undefined,
-            city: currentUser.city ? currentUser.city.title : undefined,
-            timezone: currentUser.timezone ? currentUser.timezone : undefined,
-            country: currentUser.country ? currentUser.country.title : undefined,
+            sex: profile.sex ? profile.sex : undefined,
+            city: profile.city ? profile.city.title : undefined,
+            timezone: profile.timezone ? profile.timezone : undefined,
+            country: profile.country ? profile.country.title : undefined,
         };
         const { vkquery } = getState().validation;
         const url = appConfig.API_URL;
         axios.post(
-            url + 'accounts/profile/', 
+            url + appConfig.urls.PROFILE,
             userData, 
             {
                 params: {
@@ -39,9 +39,8 @@ export const sendCurrentUserData = () => {
             }
         )
         .then(response => {
-            dispatch({
-                type: "SEND_USER_DATA_SUCCESS",
-            })
+            dispatch({ type: "SEND_USER_DATA_SUCCESS" });
+            dispatch(getCurrentUserSettings());
         })
         .catch(err => {
             dispatch({
@@ -51,3 +50,30 @@ export const sendCurrentUserData = () => {
         });
     }
 };
+
+const getCurrentUserSettings = () => {
+    return (dispatch, getState) => {
+        const { vkquery } = getState().validation;
+        const url = appConfig.API_URL;
+        axios.get(
+            url + appConfig.urls.SETTINGS, 
+            {
+                params: {
+                    ...vkquery.query,
+                }
+            }
+        )
+        .then(response => {
+            dispatch({
+                type: "GET_USER_SETTINGS_SUCCESS",
+                settings: response.data,
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: "GET_USER_SETTINGS_ERROR",
+                error: err
+            })
+        });
+    }
+}
