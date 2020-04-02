@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Group, PanelHeader, Div, Button } from '@vkontakte/vkui';
+import { Panel, Group, PanelHeader, Div, Button, Footer } from '@vkontakte/vkui';
 import { setActivePanel } from '../store/actions/panelActions';
 import { useSelector, useDispatch } from 'react-redux';
 import ErrorSnackbar from '../components/interface/ErrorSnackbar';
@@ -47,6 +47,7 @@ const Home = (props) => {
 				</Div>
 				<SheetList sheets={ recentSheets } loading={ recentSheetsLoading } />
             </Group>	
+			<Footer>Write for happiness</Footer>
 			{ snackbar }
 		</Panel>
 	)

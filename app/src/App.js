@@ -9,6 +9,7 @@ import Catalog from './panels/sheets/Catalog';
 import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
 import Details from './panels/sheets/Details';
+import About from './panels/about/About';
 import './styles/bright_light.css';
 
 const App = props => {
@@ -26,6 +27,7 @@ const App = props => {
 	if (vkquery) {
 		return (
 			<View popout={popout} modal={modal} activePanel={activePanel}>
+				<About id="about" />
 				<ProfileSettings id="profilesettings" />
 				<Home id="home" />
 				<Catalog id="catalog" />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Group, Cell, Avatar, Button } from '@vkontakte/vkui';
 import { useDispatch } from 'react-redux';
 import { setActivePanel } from '../../store/actions/panelActions';
+import "./UserSnippet.css";
 
 
 const UserSnippet = props => {
@@ -18,10 +19,18 @@ const UserSnippet = props => {
 					asideContent={
 						<div style={{ display: 'flex' }}>
 							<Button 
+								className="UserSnippet-button"
+								level="3" 
+								onClick={ () => dispatch(setActivePanel("about")) } 
+							>
+								О приложении
+							</Button>
+							<Button 
+								className="UserSnippet-button"
 								level="3" 
 								onClick={ () => dispatch(setActivePanel("profilesettings")) } 
 							>
-								{ "Profile" } 
+								Профиль 
 							</Button>
 						</div>
 					}
