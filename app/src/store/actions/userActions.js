@@ -64,12 +64,14 @@ const getCurrentUserSettings = () => {
             }
         )
         .then(response => {
+            console.log("RESP", response.data)
             dispatch({
                 type: "GET_USER_SETTINGS_SUCCESS",
                 settings: response.data,
             })
         })
         .catch(err => {
+            console.log("ERR", err)
             dispatch({
                 type: "GET_USER_SETTINGS_ERROR",
                 error: err

@@ -4,6 +4,7 @@ const initState = {
 }
 
 const userReducer = (state=initState, action) => {
+    console.log("USER IN REDUCER", state.currentUser);
     switch (action.type) {
         case "GET_VK_USER_SUCCESS":
             return {
@@ -28,6 +29,7 @@ const userReducer = (state=initState, action) => {
                 error: action.error,
             }
         case "GET_USER_SETTINGS_SUCCESS":
+            console.log("SETTINGS SUC")
             return {
                 ...state,
                 currentUser: {
