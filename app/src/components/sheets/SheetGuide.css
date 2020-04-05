@@ -4,9 +4,23 @@
 }
 
 .SheetGuide-controls-text {
-    display: block;
+    display: inline-block;
     text-align: right;
     color: var(--text_secondary);
+    margin: 0;
+    padding: 0 10px 0;
+}
+
+.SheetGuide-controls-inner-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    height: 100%;
+    padding: 10px;
+}
+
+.SheetGuide-switch {
+    display: inline-block;
 }
 
 .SheetGuide-body-wrap {
