@@ -13,6 +13,8 @@ export const getValidationQuery = (response) => {
         };
         const queryParams = parseQueryString(window.location.search);
         const hashParams = parseQueryString(window.location.hash);
+        // fix comma encoding for validation
+        queryParams.vk_access_token_settings = queryParams.vk_access_token_settings.split("%2C").join(",")
         dispatch({ type: "GET_VK_QUERY", query: queryParams, hash: hashParams });
     }
 };
