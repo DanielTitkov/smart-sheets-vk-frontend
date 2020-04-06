@@ -22,16 +22,3 @@
 .SheetGuide-switch {
     display: inline-block;
 }
-
-.SheetGuide-body-wrap {
-    padding: 20px;
-    background-color: var(--background_page);
-    transition: 0.3s;
-}
-
-.SheetGuide-body {
-    padding: 20px;
-    border-radius: 20px;
-    color: var(--text_secondary);
-    background-color: var(--header_tint);
-}

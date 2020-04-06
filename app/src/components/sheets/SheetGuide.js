@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Switch, Cell, Button } from '@vkontakte/vkui';
-import reactHtmlParser from 'react-html-parser';
+import { Switch, Cell } from '@vkontakte/vkui';
+import SheetGuideBlock from './SheetGuideBlock';
 import "./SheetGuide.css";
 
 const SheetGuide = props => {
@@ -28,36 +28,18 @@ const SheetGuide = props => {
                 </div>
             </Cell>
             { guideOpen ? (
-                <div className="SheetGuide-body-wrap">
-                    <div className="SheetGuide-body">
-                        <p><b>Инструкция</b></p>
-                        <p>{ guide ? reactHtmlParser(guide) : "Пока нет инструкции для этого листочка" }</p>
-                        <Button 
-                            size="m" 
-                            stretched 
-                            level="outline"
-                            onClick={ () => setGuideOpen(!guideOpen) }
-                        >
-                            Свернуть
-                        </Button>
-                    </div>
-                </div>
+                <SheetGuideBlock
+                    title={ "Инструкция" }
+                    text={ guide }
+                    onButtonClick={ () => setGuideOpen(!guideOpen) }
+                />
             ) : null }
             { exampleOpen ? (
-                <div className="SheetGuide-body-wrap">
-                    <div className="SheetGuide-body">
-                        <p><b>Пример</b></p>
-                        <p>{ example ? reactHtmlParser(example) : "Пока нет примера для этого листочка" }</p>
-                        <Button // DRY maybe??
-                            size="m" 
-                            stretched 
-                            level="outline"
-                            onClick={ () => setExampleOpen(!exampleOpen) } 
-                        >
-                            Свернуть
-                        </Button>
-                    </div>
-                </div>
+                <SheetGuideBlock
+                    title={ "Пример" }
+                    text={ example }
+                    onButtonClick={ () => setExampleOpen(!exampleOpen) }
+                />
             ) : null }
         </div>
     )

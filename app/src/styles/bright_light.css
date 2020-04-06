@@ -28,6 +28,8 @@
   --header_tint: #FFFFFF; /* header controls */
   --text_secondary: #757575; /* sub-texts */
   --background_page: #ebedf0; /* standart vk backround*/
+  --button_outline_border: #673AB7;
+  --button_outline_foreground: #673AB7;
 }
 
 /* :root {
