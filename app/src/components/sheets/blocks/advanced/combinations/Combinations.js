@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Textarea, Div, Button, FormLayout, FormLayoutGroup, Input, Select } from '@vkontakte/vkui';
 import appConfig from '../../../../../config/appConfig';
 import './Combinations.css';
+import { powerSet } from '../../../../../utils/arrayUtils';
 
 const Combitaions = props => {
     const dataField = appConfig.DEFAULT_DATA_FIELD;
@@ -35,6 +36,11 @@ const Combitaions = props => {
         [e.currentTarget.name]: e.currentTarget.value
     })
 
+    const handleUpdateCombinations = () => {
+        console.log("INPS", inputs); 
+        console.log("COMBS", powerSet(inputs));
+    }
+
     return (
         <div className="Combitaions">
             <div className="Combitaions-header-text">
@@ -60,7 +66,7 @@ const Combitaions = props => {
                     </Select>
                 </FormLayoutGroup>
                 <Div>
-                    <Button size="xl" mode="secondary">Update combinations</Button>
+                    <Button size="xl" onClick={ handleUpdateCombinations } mode="secondary">Update combinations</Button>
                 </Div>
             </FormLayout>
         
