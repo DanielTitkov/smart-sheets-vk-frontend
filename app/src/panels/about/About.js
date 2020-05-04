@@ -1,5 +1,5 @@
 import React from 'react';
-import {Panel, PanelHeader, HeaderButton, platform, Footer, IOS, Cell, List, Button } from '@vkontakte/vkui';
+import {Panel, PanelHeader, PanelHeaderButton, platform, Footer, IOS, Cell, List, Button } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
@@ -13,9 +13,9 @@ const About = props => {
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={ () => dispatch(setActivePanel("home")) }>
+                left={<PanelHeaderButton onClick={ () => dispatch(setActivePanel("home")) }>
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-                </HeaderButton>}
+                </PanelHeaderButton>}
             >
                 О приложении
             </PanelHeader>

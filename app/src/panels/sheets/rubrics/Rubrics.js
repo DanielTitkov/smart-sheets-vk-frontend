@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import {Panel, PanelHeader, platform, IOS, PanelHeaderButton } from '@vkontakte/vkui';
+import {Panel, PanelHeader, PanelHeaderButton, platform, IOS } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import NewSheetList from '../../components/sheets/NewSheetList';
-import { setActivePanel } from '../../store/actions/panelActions';
-import { getSheetBlueprints } from '../../store/actions/sheetsActions';
-import ErrorSnackbar from '../../components/interface/ErrorSnackbar';
+import ErrorSnackbar from '../../../components/interface/ErrorSnackbar';
+import { setActivePanel } from '../../../store/actions/panelActions';
+import { getSheetRubrics } from '../../../store/actions/sheetsActions';
+import RubricsList from '../../../components/sheets/rubrics/RubricsList';
 
 const osname = platform();
 
-const Catalog = props => {   
+const Rubrics = props => {   
     const dispatch = useDispatch();
-    const sheetBlueprints = useSelector(state => state.sheets.sheetBlueprints);
+    const rubrics = useSelector(state => state.sheets.rubrics);
     const sheetsError = useSelector(state => state.sheets.error);
 
     useEffect(() => {
-        dispatch(getSheetBlueprints());
+        dispatch(getSheetRubrics());
     }, [dispatch])
 
     const [snackbar, setSnackbar] = useState(null);
@@ -32,20 +32,20 @@ const Catalog = props => {
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<PanelHeaderButton onClick={ () => dispatch(setActivePanel("rubrics")) }>
+                left={<PanelHeaderButton onClick={ () => dispatch(setActivePanel("home")) }>
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </PanelHeaderButton>}
             >
-                Sheets Catalog
+                Sheets Rubrics
             </PanelHeader>
-            <NewSheetList blueprints={ sheetBlueprints } />
+            <RubricsList rubrics={ rubrics } />
             { snackbar }
         </Panel>
     )
 }
 
-Catalog.propTypes = {
+Rubrics.propTypes = {
 	id: PropTypes.string.isRequired,
 };
 
-export default Catalog;
+export default Rubrics;

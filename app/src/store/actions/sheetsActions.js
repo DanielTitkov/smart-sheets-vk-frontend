@@ -142,3 +142,27 @@ export const deleteSheet = (sheet) => {
         });
     }
 }
+
+export const getSheetRubrics = () => {
+    return (dispatch, getState) => {
+        const url = appConfig.API_URL;
+        const { vkquery } = getState().validation;
+        const params = {...vkquery.query}       
+
+        axios.get(url + appConfig.urls.RUBRICS, {
+            params: params
+        })
+        .then(response => {
+            dispatch({
+                type: "GET_SHEET_RUBRICS_SUCCESS",
+                rubrics: response.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: "GET_SHEET_RUBRICS_ERROR",
+                error: err
+            })
+        });
+    }
+}

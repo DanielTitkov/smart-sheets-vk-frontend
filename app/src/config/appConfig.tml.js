@@ -5,6 +5,7 @@ const appConfig = {
     urls: {
         PROFILE: 'accounts/profile',
         SETTINGS: 'accounts/settings',
+        RUBRICS: 'rubrics/',
     },
 };
 

@@ -4,6 +4,7 @@ const initState = {
     activeSheet: null,
     recentSheets: null,
     sheetBlueprints: null,
+    rubrics: null,
     error: null,
     loading: false,
 }
@@ -78,6 +79,17 @@ const sheetsReducer = (state=initState, action) => {
                 activeSheet: state.activeSheet && (state.activeSheet.id === action.id) ? null : state.activeSheet
             };
         case "DELETE_SHEET_ERROR":
+            return {
+                ...state,
+                error: action.error
+            };
+        case "GET_SHEET_RUBRICS_SUCCESS":
+            return {
+                ...state,
+                error: null,
+                rubrics: action.rubrics
+            };
+        case "GET_SHEET_RUBRICS_ERROR":
             return {
                 ...state,
                 error: action.error

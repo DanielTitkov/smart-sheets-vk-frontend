@@ -44,6 +44,13 @@ const Home = (props) => {
 					>
 						{ "Add new Smart Sheet" } 
 					</Button>
+					<Button 
+						size="xl" 
+						level="2" 
+						onClick={ () => dispatch(setActivePanel("rubrics")) } 
+					>
+						{ "Rubrics" } 
+					</Button>
 				</Div>
 				<SheetList sheets={ recentSheets } loading={ recentSheetsLoading } />
             </Group>	
