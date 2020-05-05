@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { backgroundImage, avatarStyle } from '../../../styles/inline';
+import { avatarStyle } from '../../../styles/inline';
 import Icon28ChevronRightOutline from '@vkontakte/icons/dist/28/chevron_right_outline';
 import { setActivePanel } from '../../../store/actions/panelActions';
 import { Avatar, RichCell } from '@vkontakte/vkui';
@@ -22,7 +22,11 @@ const RubricSnippet = props => {
                 <Icon28ChevronRightOutline 
                     onClick={ () => {
                         dispatch(setActiveRubric(rubric));
-                        dispatch(setActivePanel("catalog"));
+                        if (rubric.hasChildren) {
+                            dispatch(setActivePanel("rubrics"));
+                        } else {
+                            dispatch(setActivePanel("catalog"));
+                        }
                     } }
                 />
             }

@@ -22,7 +22,7 @@ export const setActiveSheet = (sheetOrBlueprint) => {
 
 export const setActiveRubric = (rubric) => {
     return (dispatch, getState) => {
-        const { activeRubric } = getState().sheets; // just in case
+        // const { activeRubric } = getState().sheets; // just in case
         
         dispatch({
             type: "SET_ACTIVE_RUBRIC",
@@ -154,11 +154,13 @@ export const deleteSheet = (sheet) => {
     }
 }
 
-export const getSheetRubrics = () => {
+export const getSheetRubrics = (parent=null) => {
     return (dispatch, getState) => {
+        dispatch({type: "SET_LOADING"});
+
         const url = appConfig.API_URL;
         const { vkquery } = getState().validation;
-        const params = {...vkquery.query}       
+        const params = parent ? {...vkquery.query, parent: parent.id} : {...vkquery.query};  
 
         axios.get(url + appConfig.urls.RUBRICS, {
             params: params

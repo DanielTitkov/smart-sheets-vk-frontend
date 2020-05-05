@@ -10,6 +10,7 @@ const RubricsList = props => {
             { rubrics && rubrics.length !== 0 ? (rubrics.map(rubric => {
                     return (
                         <RubricSnippet 
+                            key={ rubric.id }
                             rubric={ rubric }
                         />
                     )

@@ -5,6 +5,7 @@ const initState = {
     recentSheets: null,
     sheetBlueprints: null,
     rubrics: null,
+    parentRubric: null,
     activeRubric: null,
     error: null,
     loading: false,
@@ -59,6 +60,7 @@ const sheetsReducer = (state=initState, action) => {
             return {
                 ...state,
                 error: null,
+                loading: false,
                 sheetBlueprints: action.blueprints
             };
         case "POST_ACTIVE_SHEET_SUCCESS":
@@ -78,6 +80,7 @@ const sheetsReducer = (state=initState, action) => {
         case "GET_SHEET_BLUEPRINTS_ERROR":
             return {
                 ...state,
+                loading: false,
                 error: action.error
             };
         case "DELETE_SHEET_SUCCESS":
@@ -95,11 +98,13 @@ const sheetsReducer = (state=initState, action) => {
             return {
                 ...state,
                 error: null,
+                loading: false,
                 rubrics: action.rubrics
             };
         case "GET_SHEET_RUBRICS_ERROR":
             return {
                 ...state,
+                loading: false,
                 error: action.error
             };
         case "SET_LOADING":
