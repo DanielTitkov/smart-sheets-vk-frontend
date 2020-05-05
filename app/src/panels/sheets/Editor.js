@@ -46,10 +46,10 @@ const Editor = props => {
             >
                 Sheets Editor
             </PanelHeader>
-            <Div className="Editor-header-wrap">
+            <div className="Editor-header-wrap">
                 <SheetHeader params={ { "imageURL": activeSheet.blueprint.imageUrl } } />
                 <SheetGuide params={ { "guide": activeSheet.blueprint.guide, "example": activeSheet.blueprint.example} } />
-            </Div>
+            </div>
             <Div className="Editor-sheet-wrap">
                 {sheetBody}
             </Div>

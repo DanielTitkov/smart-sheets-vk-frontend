@@ -5,6 +5,7 @@ import Icon28ChevronRightOutline from '@vkontakte/icons/dist/28/chevron_right_ou
 import { setActivePanel } from '../../../store/actions/panelActions';
 import { Avatar, RichCell } from '@vkontakte/vkui';
 import "./RubricSnippet.css";
+import { setActiveRubric } from '../../../store/actions/sheetsActions';
 
 
 const RubricSnippet = props => {
@@ -20,7 +21,7 @@ const RubricSnippet = props => {
             after={
                 <Icon28ChevronRightOutline 
                     onClick={ () => {
-                        {/* dispatch(setActiveSheet(blueprint)); */}
+                        dispatch(setActiveRubric(rubric));
                         dispatch(setActivePanel("catalog"));
                     } }
                 />

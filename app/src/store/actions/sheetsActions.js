@@ -20,6 +20,17 @@ export const setActiveSheet = (sheetOrBlueprint) => {
     }
 };
 
+export const setActiveRubric = (rubric) => {
+    return (dispatch, getState) => {
+        const { activeRubric } = getState().sheets; // just in case
+        
+        dispatch({
+            type: "SET_ACTIVE_RUBRIC",
+            rubric: rubric,
+        })
+    }
+};
+
 export const updateActiveSheetData = (id, dataContent, dataField) => {
     return (dispatch, getState) => {
         dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: {[dataField]: dataContent} });

@@ -1,11 +1,12 @@
 .SheetGuide {
     padding: 0;
-    background-color: var(--background_page);
+    /* background-color: var(--background_page); */
 }
 
 .SheetGuide-controls-text {
     display: inline-block;
     text-align: right;
+    vertical-align: bottom;
     color: var(--text_secondary);
     margin: 0;
     padding: 0 10px 0;

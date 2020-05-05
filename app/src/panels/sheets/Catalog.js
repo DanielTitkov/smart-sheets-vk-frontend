@@ -15,6 +15,7 @@ const Catalog = props => {
     const dispatch = useDispatch();
     const sheetBlueprints = useSelector(state => state.sheets.sheetBlueprints);
     const sheetsError = useSelector(state => state.sheets.error);
+    const activeRubric = useSelector(state => state.sheets.activeRubric);
 
     useEffect(() => {
         dispatch(getSheetBlueprints());
@@ -36,7 +37,7 @@ const Catalog = props => {
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </PanelHeaderButton>}
             >
-                Sheets Catalog
+                Каталог | { activeRubric ? activeRubric.title : "Все листочки" }
             </PanelHeader>
             <NewSheetList blueprints={ sheetBlueprints } />
             { snackbar }

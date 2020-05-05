@@ -5,6 +5,7 @@ const initState = {
     recentSheets: null,
     sheetBlueprints: null,
     rubrics: null,
+    activeRubric: null,
     error: null,
     loading: false,
 }
@@ -18,6 +19,13 @@ const sheetsReducer = (state=initState, action) => {
                     ...action.sheet
                 }) : null
             };
+        case "SET_ACTIVE_RUBRIC":
+            return {
+                ...state,
+                activeRubric: action.rubric ? ({
+                    ...action.rubric
+                }) : null
+            }
         case "UPDATE_ACTIVE_SHEET_DATA":
             return {
                 ...state,
