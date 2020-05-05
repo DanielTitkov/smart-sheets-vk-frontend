@@ -24,8 +24,8 @@ const Catalog = props => {
     }
 
     useEffect(() => {
-        dispatch(getSheetBlueprints());
-    }, [dispatch])
+        dispatch(getSheetBlueprints(activeRubric));
+    }, [dispatch, activeRubric])
 
 	useEffect(() => {
         const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />

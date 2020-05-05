@@ -38,7 +38,7 @@ const SheetDetails = props => {
                                 size="xl"
                                 onClick={ () => {
                                     dispatch(setActiveSheet(null));
-                                    dispatch(setActivePanel("rubrics"));
+                                    dispatch(setActivePanel("catalog"));
                                 } }
                             >
                                 Назад

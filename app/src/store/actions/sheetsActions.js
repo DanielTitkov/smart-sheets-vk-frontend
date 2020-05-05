@@ -64,11 +64,11 @@ export const getRecentSheets = () => {
     }
 }
 
-export const getSheetBlueprints = () => {
+export const getSheetBlueprints = (rubric=null) => {
     return (dispatch, getState) => {
         const url = appConfig.API_URL;
         const { vkquery } = getState().validation;
-        const params = {...vkquery.query}       
+        const params = rubric ? {...vkquery.query, rubric: rubric.id} : {...vkquery.query}       
 
         axios.get(url + "blueprints/", {
             params: params
