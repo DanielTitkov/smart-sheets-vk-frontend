@@ -3,7 +3,7 @@ import { List, Cell, Switch, FormLayout, FormLayoutGroup, Input  } from '@vkonta
 
 const UserSettings = props => {
     const { settings } = props;
-    const [ encrypt, setEncrypt ] = useState(settings.encrypt);
+    const [ encrypt, setEncrypt ] = useState(settings ? settings.encrypt : false);
     return (
         <List>
             <Cell 

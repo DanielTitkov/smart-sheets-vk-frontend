@@ -39,7 +39,7 @@ const Home = (props) => {
 				<Div>
 					<Button 
 						size="xl" 
-						level="2" 
+						mode="secondary"
 						onClick={ () => dispatch(setActivePanel("rubrics")) } 
 					>
 						{ "Add new Smart Sheet" } 

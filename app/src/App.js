@@ -11,7 +11,7 @@ import Details from './panels/sheets/Details';
 import About from './panels/about/About';
 import Rubrics from './panels/sheets/rubrics/Rubrics';
 import '@vkontakte/vkui/dist/vkui.css';
-// import './styles/bright_light.css';
+import './styles/bright_light.css';
 
 const App = props => {
 	const dispatch = useDispatch();

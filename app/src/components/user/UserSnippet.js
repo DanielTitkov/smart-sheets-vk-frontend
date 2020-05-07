@@ -11,21 +11,21 @@ const UserSnippet = props => {
     return (currentUser && currentUser.profile &&
 		<Group>
 			<Cell
-				before={currentUser.profile.photo_200 ? <Avatar src={currentUser.profile.photo_200}/> : null}
+				before={ currentUser.profile.photo_200 ? <Avatar src={ currentUser.profile.photo_200 }/> : null }
 				size="l"
-				description={currentUser.profile.city && currentUser.profile.city.title ? currentUser.profile.city.title : ''}
+				description={ currentUser.profile.city && currentUser.profile.city.title ? currentUser.profile.city.title : '' }
 				asideContent={
-					<div style={{ display: 'flex' }}>
+					<div style={ { display: 'flex' } }>
 						<Button 
 							className="UserSnippet-button"
-							level="3" 
+							mode="tertiary"
 							onClick={ () => dispatch(setActivePanel("about")) } 
 						>
 							О приложении
 						</Button>
 						<Button 
 							className="UserSnippet-button"
-							level="3" 
+							mode="tertiary"
 							onClick={ () => dispatch(setActivePanel("profilesettings")) } 
 						>
 							Профиль 
