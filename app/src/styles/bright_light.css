@@ -23,9 +23,10 @@
   --button_secondary_foreground: #212121; /* secondaty button text */
   --button_tertiary_background: #D1C4E9;  /* tertiary button */
   --button_tertiary_foreground: #212121;  /* tertiary button text */
-  --header_alternate_background: #512DA8; /* ?? */
-  --header_background: #512DA8; /* header bg color */
-  --header_tint: #FFFFFF; /* header controls */
+  --header_text: #212121;
+  --header_text_alternate: #212121;
+  --header_text_secondary: #818c99;
+  --header_tint: #212121; /* header controls */
   --text_secondary: #757575; /* sub-texts */
   --background_page: #ebedf0; /* standart vk backround*/
   --button_outline_border: #673AB7;
@@ -33,6 +34,7 @@
 }
 
 /* :root {
+ :root {
   --accent: #3f8ae0;
   --action_sheet_action_foreground: #3f8ae0;
   --action_sheet_separator: rgba(0, 0, 0, 0.12);
@@ -239,5 +241,6 @@
   --dynamic_green: #4bb34b;
   --dynamic_orange: #ffa000;
   --dynamic_violet: #792ec0;
+}
 } */
 /* stylelint-enable */

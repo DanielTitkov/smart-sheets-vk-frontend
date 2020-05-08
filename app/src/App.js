@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Spinner, Footer } from '@vkontakte/vkui';
-import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Home';
 import { useSelector, useDispatch } from 'react-redux';
 import { getValidationQuery } from './store/actions/validationActions';
@@ -10,6 +9,8 @@ import ProfileSettings from './panels/profile/Settings';
 import Editor from './panels/sheets/Editor';
 import Details from './panels/sheets/Details';
 import About from './panels/about/About';
+import Rubrics from './panels/sheets/rubrics/Rubrics';
+import '@vkontakte/vkui/dist/vkui.css';
 import './styles/bright_light.css';
 
 const App = props => {
@@ -30,6 +31,7 @@ const App = props => {
 				<About id="about" />
 				<ProfileSettings id="profilesettings" />
 				<Home id="home" />
+				<Rubrics id="rubrics" />
 				<Catalog id="catalog" />
 				<Details id="details" />
 				<Editor id="editor" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Cell, Div, Button, InfoRow } from '@vkontakte/vkui';
 import { backgroundImage } from '../../styles/inline';
-import { setActiveSheet } from '../../store/actions/sheetsActions';
+import { setActiveSheet, setActiveRubric } from '../../store/actions/sheetsActions';
 import { setActivePanel } from '../../store/actions/panelActions';
 import { useDispatch } from 'react-redux';
 import reactHtmlParser from 'react-html-parser';
@@ -48,8 +48,9 @@ const SheetDetails = props => {
                             <Button 
                                 stretched 
                                 size="xl"
-                                level="2" 
+                                mode="secondary"
                                 onClick={ () => {
+                                    dispatch(setActiveRubric(null)); // clear rubric if sheet is selected
                                     dispatch(setActivePanel("editor"));
                                 } }
                             >

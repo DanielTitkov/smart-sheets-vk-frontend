@@ -14,7 +14,7 @@ const SheetGuideBlock = props => {
                 <Button
                     size="m" 
                     stretched 
-                    level="outline"
+                    mode="outline"
                     onClick={ onButtonClick } 
                 >
                     Свернуть

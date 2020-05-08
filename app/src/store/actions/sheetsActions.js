@@ -20,6 +20,17 @@ export const setActiveSheet = (sheetOrBlueprint) => {
     }
 };
 
+export const setActiveRubric = (rubric) => {
+    return (dispatch, getState) => {
+        // const { activeRubric } = getState().sheets; // just in case
+        
+        dispatch({
+            type: "SET_ACTIVE_RUBRIC",
+            rubric: rubric,
+        })
+    }
+};
+
 export const updateActiveSheetData = (id, dataContent, dataField) => {
     return (dispatch, getState) => {
         dispatch({ type: "UPDATE_ACTIVE_SHEET_DATA", id: id, data: {[dataField]: dataContent} });
@@ -53,11 +64,11 @@ export const getRecentSheets = () => {
     }
 }
 
-export const getSheetBlueprints = () => {
+export const getSheetBlueprints = (rubric=null) => {
     return (dispatch, getState) => {
         const url = appConfig.API_URL;
         const { vkquery } = getState().validation;
-        const params = {...vkquery.query}       
+        const params = rubric ? {...vkquery.query, rubric: rubric.id} : {...vkquery.query}       
 
         axios.get(url + "blueprints/", {
             params: params
@@ -139,6 +150,32 @@ export const deleteSheet = (sheet) => {
             dispatch(getRecentSheets()) // maybe use didInvalidate property in state
         }).catch(err => {
             dispatch({ type: "DELETE_SHEET_ERROR", error: err });
+        });
+    }
+}
+
+export const getSheetRubrics = (parent=null) => {
+    return (dispatch, getState) => {
+        dispatch({type: "SET_LOADING"});
+
+        const url = appConfig.API_URL;
+        const { vkquery } = getState().validation;
+        const params = parent ? {...vkquery.query, parent: parent.id} : {...vkquery.query};  
+
+        axios.get(url + appConfig.urls.RUBRICS, {
+            params: params
+        })
+        .then(response => {
+            dispatch({
+                type: "GET_SHEET_RUBRICS_SUCCESS",
+                rubrics: response.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: "GET_SHEET_RUBRICS_ERROR",
+                error: err
+            })
         });
     }
 }

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {Panel, PanelHeader, HeaderButton, platform, IOS } from '@vkontakte/vkui';
+import {Panel, PanelHeader, platform, IOS, PanelHeaderButton } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import NewSheetList from '../../components/sheets/NewSheetList';
 import { setActivePanel } from '../../store/actions/panelActions';
-import { getSheetBlueprints } from '../../store/actions/sheetsActions';
+import { getSheetBlueprints, setActiveRubric } from '../../store/actions/sheetsActions';
 import ErrorSnackbar from '../../components/interface/ErrorSnackbar';
 
 const osname = platform();
@@ -15,13 +15,18 @@ const Catalog = props => {
     const dispatch = useDispatch();
     const sheetBlueprints = useSelector(state => state.sheets.sheetBlueprints);
     const sheetsError = useSelector(state => state.sheets.error);
+    const activeRubric = useSelector(state => state.sheets.activeRubric);
+    const [snackbar, setSnackbar] = useState(null);
+
+    const handleGoBack = () => {
+        dispatch(setActivePanel("rubrics"));
+        dispatch(setActiveRubric(null));     
+    }
 
     useEffect(() => {
-        dispatch(getSheetBlueprints());
-    }, [dispatch])
+        dispatch(getSheetBlueprints(activeRubric));
+    }, [dispatch, activeRubric])
 
-    const [snackbar, setSnackbar] = useState(null);
-	
 	useEffect(() => {
         const errorSnackbar = <ErrorSnackbar onClose={() => setSnackbar(null)} error={sheetsError} />
 		if (sheetsError) {
@@ -32,11 +37,11 @@ const Catalog = props => {
     return (
         <Panel id={props.id}>
             <PanelHeader
-                left={<HeaderButton onClick={ () => dispatch(setActivePanel("home")) }>
+                left={<PanelHeaderButton onClick={ handleGoBack }>
                     {osname === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-                </HeaderButton>}
+                </PanelHeaderButton>}
             >
-                Sheets Catalog
+                Каталог | { activeRubric ? activeRubric.title : "Все листочки" }
             </PanelHeader>
             <NewSheetList blueprints={ sheetBlueprints } />
             { snackbar }
