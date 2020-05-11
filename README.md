@@ -5,3 +5,5 @@
 # Smart Sheet VK Frontend
 
 Frontend app for Smart Sheets App. Uses VKUI. 
+
+[Link to application](https://vk.com/app7248329) (opens within vk.com)
