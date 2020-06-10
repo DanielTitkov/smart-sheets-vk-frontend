@@ -1,0 +1,41 @@
+.StructuredTextFrame-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 100%;
+    padding: 10px 10px 0 10px;
+}
+
+.StructuredTextFrame-header * {
+    margin: 0px;
+    padding: 0px;
+}
+
+.StructuredTextFrame-header h2 {
+    margin-bottom: 15px;
+}
+
+.StructuredTextFrame-header-text {
+    width: 70%;
+}
+
+.StructuredTextFrame-header-image {
+    width: 20%;
+}
+
+.StructuredTextFrame-header-image img {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.StructuredTextFrame-item-header {
+    font-weight: 700;
+}
+
+.StructuredTextFrame-textarea textarea {
+    font-weight: 700;
+    border: 1px solid #000;
+    background-color: #fff; /* change to variable */
+}
